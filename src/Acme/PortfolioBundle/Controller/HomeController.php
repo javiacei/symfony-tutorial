@@ -2,6 +2,7 @@
 
 namespace Acme\PortfolioBundle\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -9,11 +10,11 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @author Ignacio Velázquez <ivelazquez85@gmail.com>
  */
-class HomeController
+class HomeController extends Controller
 {
     public function indexAction()
     {
-        return new Response('Render this');
+        return $this->render('AcmePortfolioBundle:Home:index.html.twig');
     }
 }
  
