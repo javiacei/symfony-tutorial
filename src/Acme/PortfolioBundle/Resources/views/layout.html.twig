@@ -2,10 +2,26 @@
 <html>
     <head>
         <title>Symfony Tutorial</title>
+        <link rel="stylesheet" href="bundles/acmeportfolio/css/bootstrap.css"/>
+        <link rel="stylesheet" href="bundles/acmeportfolio/css/main.css"/>
+
+        <script type="text/javascript" src="bundles/acmeportfolio/js/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="bundles/acmeportfolio/js/bootstrap.min.js"></script>
     </head>
     <body>
-        {% block body %}
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ path('portfolio_home') }}">Home</a></li>
+                    <li><a href="{{ path('portfolio_about') }}">About</a></li>
+                    <li><a href="{{ path('portfolio_contact') }}">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            {% block body %}
 
-        {% endblock %}
+            {% endblock %}
+        </div>
     </body>
 </html>
