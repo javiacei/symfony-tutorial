@@ -1,4 +1,14 @@
 
-acme_portfolio_home:
+portfolio_home:
     path: /
     defaults: { _controller: 'AcmePortfolioBundle:Home:index' }
+
+
+portfolio_about:
+    path: /about
+    defaults: { _controller: 'AcmePortfolioBundle:About:index' }
+
+
+portfolio_contact:
+    path: /contact
+    defaults: { _controller: 'AcmePortfolioBundle:Contact:index' }
