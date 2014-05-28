@@ -1,0 +1,3 @@
+
+acme_portfolio:
+    resource: "@AcmePortfolioBundle/Resources/config/routing.yml"
