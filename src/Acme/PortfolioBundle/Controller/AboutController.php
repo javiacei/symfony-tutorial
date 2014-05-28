@@ -14,7 +14,12 @@ class AboutController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AcmePortfolioBundle:About:index.html.twig');
+        return $this->render(
+            'AcmePortfolioBundle:About:index.html.twig',
+            array(
+                'section' => 'About'
+            )
+        );
     }
 }
  

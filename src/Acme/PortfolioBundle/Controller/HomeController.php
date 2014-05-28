@@ -14,7 +14,12 @@ class HomeController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AcmePortfolioBundle:Home:index.html.twig');
+        return $this->render(
+            'AcmePortfolioBundle:Home:index.html.twig',
+            array(
+                'section' => 'Home'
+            )
+        );
     }
 }
  

@@ -14,7 +14,12 @@ class ContactController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AcmePortfolioBundle:Contact:index.html.twig');
+        return $this->render(
+            'AcmePortfolioBundle:Contact:index.html.twig',
+            array(
+                'section' => 'Contact'
+            )
+        );
     }
 }
  
