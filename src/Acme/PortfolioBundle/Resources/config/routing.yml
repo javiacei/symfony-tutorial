@@ -17,11 +17,17 @@ portfolio_blog:
 portfolio_blog_list:
     path: /blog/{locale}
     defaults: { _controller: 'AcmePortfolioBundle:Blog:list' }
+    requirements:
+        locale: en|es
 
 
 portfolio_blog_show:
     path: /blog/{locale}/{slug}
-    defaults: { _controller: 'AcmePortfolioBundle:Blog:show' }
+    defaults: { _controller: 'AcmePortfolioBundle:Blog:show'}
+    methods: GET
+    requirements:
+        locale: en|es
+        slug: "[a-z\-]+[1-9]"
 
 
 portfolio_contact:
