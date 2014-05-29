@@ -9,6 +9,11 @@ portfolio_about:
     defaults: { _controller: 'AcmePortfolioBundle:About:index' }
 
 
+portfolio_blog:
+    path: /blog
+    defaults: { _controller: 'AcmePortfolioBundle:Blog:index' }
+
+
 portfolio_contact:
     path: /contact
     defaults: { _controller: 'AcmePortfolioBundle:Contact:index' }
