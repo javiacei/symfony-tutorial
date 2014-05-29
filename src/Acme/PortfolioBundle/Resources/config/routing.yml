@@ -14,6 +14,11 @@ portfolio_blog:
     defaults: { _controller: 'AcmePortfolioBundle:Blog:index' }
 
 
+portfolio_blog_list:
+    path: /blog/{locale}
+    defaults: { _controller: 'AcmePortfolioBundle:Blog:list' }
+
+
 portfolio_contact:
     path: /contact
     defaults: { _controller: 'AcmePortfolioBundle:Contact:index' }

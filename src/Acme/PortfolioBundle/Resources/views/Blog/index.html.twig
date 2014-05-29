@@ -1,5 +1,12 @@
 {% extends "AcmePortfolioBundle::layout.html.twig" %}
 
 {% block body %}
-    <h1>Blog</h1>
+    <div class="row">
+        <div class="col-xs-6">
+            <a href="{{ path('portfolio_blog_list', {'locale': 'es'}) }}"><h2>ES</h2></a>
+        </div>
+        <div class="col-xs-6">
+            <a href="{{ path('portfolio_blog_list', {'locale': 'en'}) }}"><h2>EN</h2></a>
+        </div>
+    </div>
 {% endblock %}

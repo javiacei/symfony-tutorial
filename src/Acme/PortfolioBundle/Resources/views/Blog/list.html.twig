@@ -1,0 +1,10 @@
+{% extends "AcmePortfolioBundle::layout.html.twig" %}
+
+{% block body %}
+    <h2>Blog posts in {{ locale }}</h2>
+    <ul>
+        {% for post in posts %}
+            <li>{{ post }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
