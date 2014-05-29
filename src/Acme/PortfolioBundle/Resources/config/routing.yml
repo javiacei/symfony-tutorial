@@ -19,6 +19,11 @@ portfolio_blog_list:
     defaults: { _controller: 'AcmePortfolioBundle:Blog:list' }
 
 
+portfolio_blog_show:
+    path: /blog/{locale}/{slug}
+    defaults: { _controller: 'AcmePortfolioBundle:Blog:show' }
+
+
 portfolio_contact:
     path: /contact
     defaults: { _controller: 'AcmePortfolioBundle:Contact:index' }

@@ -34,6 +34,22 @@ class BlogController extends Controller
         );
     }
 
+    public function showAction($locale, $slug)
+    {
+        $posts = $this->getPosts($locale);
+
+        $index = array_search($slug, $posts);
+
+        return $this->render(
+            'AcmePortfolioBundle:Blog:show.html.twig',
+            array(
+                'section' => 'Blog',
+                'locale'  => $locale,
+                'post'   => $posts[$index]
+            )
+        );
+    }
+
     public function getPosts($locale)
     {
         $posts = array(
