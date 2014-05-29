@@ -16,8 +16,8 @@ portfolio_blog:
 
 
 portfolio_blog_list:
-    path: /blog/{locale}
-    defaults: { _controller: 'AcmePortfolioBundle:Blog:list' }
+    path: /blog/{locale}.{_format}
+    defaults: { _controller: 'AcmePortfolioBundle:Blog:list', _format: html }
     requirements:
         locale: en|es
 

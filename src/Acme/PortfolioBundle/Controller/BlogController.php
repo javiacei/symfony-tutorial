@@ -3,6 +3,7 @@
 namespace Acme\PortfolioBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -22,7 +23,7 @@ class BlogController extends Controller
         );
     }
 
-    public function listAction($locale)
+    public function listAction(Request $request, $locale)
     {
         return $this->render(
             'AcmePortfolioBundle:Blog:list.html.twig',
