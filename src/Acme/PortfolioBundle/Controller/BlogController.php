@@ -6,13 +6,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
 /**
  * BlogController
+ *
+ * @Route("/blog")
  *
  * @author Ignacio Velázquez <ivelazquez85@gmail.com>
  */
 class BlogController extends Controller
 {
+    /**
+     * @Route("/", name="portfolio_blog_index")
+     *
+     * @return Response
+     */
     public function indexAction()
     {
         return $this->render(
@@ -23,6 +32,20 @@ class BlogController extends Controller
         );
     }
 
+    /**
+     * @Route("/{locale}.{_format}", name="portfolio_blog_list",
+     * defaults={
+     *      "_format": "html"
+     * },
+     * requirements={
+     *        "locale" = "en|es"
+     * })
+     *
+     * @param Request $request
+     * @param         $locale
+     *
+     * @return Response
+     */
     public function listAction(Request $request, $locale)
     {
         return $this->render(
@@ -35,6 +58,17 @@ class BlogController extends Controller
         );
     }
 
+    /**
+     * @Route("/{locale}/{slug}", name="portfolio_blog_show", requirements={
+     *        "locale" = "en|es",
+     *        "slug" = "[a-z\-]+[1-9]"
+     * })
+     *
+     * @param $locale
+     * @param $slug
+     *
+     * @return Response
+     */
     public function showAction($locale, $slug)
     {
         $posts = $this->getPosts($locale);

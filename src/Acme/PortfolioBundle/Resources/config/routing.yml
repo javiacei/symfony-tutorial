@@ -10,25 +10,8 @@ portfolio_about:
 
 
 portfolio_blog:
-    path: /blog
-    defaults: { _controller: 'AcmePortfolioBundle:Blog:index' }
-    condition: "request.headers.get('User-Agent') matches '/Chrome/'"
-
-
-portfolio_blog_list:
-    path: /blog/{locale}.{_format}
-    defaults: { _controller: 'AcmePortfolioBundle:Blog:list', _format: html }
-    requirements:
-        locale: en|es
-
-
-portfolio_blog_show:
-    path: /blog/{locale}/{slug}
-    defaults: { _controller: 'AcmePortfolioBundle:Blog:show'}
-    methods: GET
-    requirements:
-        locale: en|es
-        slug: "[a-z\-]+[1-9]"
+    resource: "@AcmePortfolioBundle/Controller/BlogController.php"
+    type: annotation
 
 
 portfolio_contact:
