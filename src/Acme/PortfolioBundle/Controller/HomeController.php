@@ -5,6 +5,7 @@ namespace Acme\PortfolioBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * HomeController
@@ -13,13 +14,14 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class HomeController extends Controller
 {
+    /**
+     * @Template()
+     * @return Response
+     */
     public function indexAction()
     {
-        return $this->render(
-            'AcmePortfolioBundle:Home:index.html.twig',
-            array(
-                'section' => 'Home'
-            )
+        return array(
+            'section' => 'Home'
         );
     }
 

@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
  * AboutController
@@ -14,6 +15,13 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class AboutController extends Controller
 {
+    /**
+     *
+     * @Template()
+     * @param Request $request
+     *
+     * @return null|JsonResponse|Response
+     */
     public function indexAction(Request $request)
     {
         $response = null;
@@ -21,13 +29,9 @@ class AboutController extends Controller
         $projects = $this->curl($githubUrl, $request);
 
         if ('html' === $request->getRequestFormat()) {
-            $response = new Response(
-                $this->renderView('AcmePortfolioBundle:About:index.html.twig',
-                    array(
-                        'section' => 'About',
-                        'projects' => $projects
-                    )
-                )
+            $response = array(
+                'section' => 'About',
+                'projects' => $projects
             );
         }
 

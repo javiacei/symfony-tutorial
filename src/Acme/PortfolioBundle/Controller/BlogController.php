@@ -5,6 +5,7 @@ namespace Acme\PortfolioBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -18,21 +19,21 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class BlogController extends Controller
 {
     /**
+     * @Template()
      * @Route("/", name="portfolio_blog_index")
      *
      * @return Response
      */
     public function indexAction()
     {
-        return $this->render(
-            'AcmePortfolioBundle:Blog:index.html.twig',
-            array(
-                'section' => 'Blog'
-            )
+        return array(
+            'section' => 'Blog'
         );
     }
 
     /**
+     *
+     * @Template()
      * @Route("/{locale}.{_format}", name="portfolio_blog_list",
      * defaults={
      *      "_format": "html"
@@ -57,17 +58,16 @@ class BlogController extends Controller
             }
         }
 
-        return $this->render(
-            'AcmePortfolioBundle:Blog:list.html.twig',
-            array(
-                'section' => 'Blog',
-                'locale'  => $locale,
-                'posts'   => $localePosts
-            )
+        return array(
+            'section' => 'Blog',
+            'locale'  => $locale,
+            'posts'   => $localePosts
         );
     }
 
     /**
+     *
+     * @Template()
      * @Route("/{locale}/{slug}", name="portfolio_blog_show", requirements={
      *        "locale" = "en|es",
      *        "slug" = "[a-z\-]+[1-9]"
@@ -84,13 +84,10 @@ class BlogController extends Controller
 
         foreach($posts as $post) {
             if ($post['locale'] === $locale && $post['slug'] === $slug) {
-                return $this->render(
-                    'AcmePortfolioBundle:Blog:show.html.twig',
-                    array(
-                        'section' => 'Blog',
-                        'locale'  => $locale,
-                        'post'   => $post
-                    )
+                return array(
+                    'section' => 'Blog',
+                    'locale'  => $locale,
+                    'post'   => $post
                 );
             }
         }
