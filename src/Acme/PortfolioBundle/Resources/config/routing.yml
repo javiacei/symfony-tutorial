@@ -1,10 +1,10 @@
 
-portfolio_home:
+portfolio_home_index:
     path: /
     defaults: { _controller: 'AcmePortfolioBundle:Home:index' }
 
 
-portfolio_about:
+portfolio_about_index:
     path: /about
     defaults: { _controller: 'AcmePortfolioBundle:About:index' }
 
@@ -14,6 +14,6 @@ portfolio_blog:
     type: annotation
 
 
-portfolio_contact:
+portfolio_contact_index:
     path: /contact
     defaults: { _controller: 'AcmePortfolioBundle:Contact:index' }

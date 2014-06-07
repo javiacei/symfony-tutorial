@@ -48,12 +48,21 @@ class BlogController extends Controller
      */
     public function listAction(Request $request, $locale)
     {
+        $localePosts = array();
+        $posts = $this->getPosts();
+
+        foreach($posts as $post) {
+            if ($post['locale'] === $locale) {
+                $localePosts[] = $post;
+            }
+        }
+
         return $this->render(
             'AcmePortfolioBundle:Blog:list.html.twig',
             array(
                 'section' => 'Blog',
                 'locale'  => $locale,
-                'posts'   => $this->getPosts($locale)
+                'posts'   => $localePosts
             )
         );
     }
@@ -71,40 +80,68 @@ class BlogController extends Controller
      */
     public function showAction($locale, $slug)
     {
-        $posts = $this->getPosts($locale);
+        $posts = $this->getPosts();
 
-        $index = array_search($slug, $posts);
+        foreach($posts as $post) {
+            if ($post['locale'] === $locale && $post['slug'] === $slug) {
+                return $this->render(
+                    'AcmePortfolioBundle:Blog:show.html.twig',
+                    array(
+                        'section' => 'Blog',
+                        'locale'  => $locale,
+                        'post'   => $post
+                    )
+                );
+            }
+        }
 
-        return $this->render(
-            'AcmePortfolioBundle:Blog:show.html.twig',
-            array(
-                'section' => 'Blog',
-                'locale'  => $locale,
-                'post'   => $posts[$index]
-            )
-        );
+        return $this->redirect($this->generateUrl('portfolio_home_index'));
+
+        return $this->forward('AcmePortfolioBundle:Blog:list', array(
+            'locale'  => $locale
+        ));
     }
 
-    public function getPosts($locale)
+    public function getPosts()
     {
-        $posts = array(
-            'en'  => array(
-                'post-en-1',
-                'post-en-2',
-                'post-en-3',
-                'post-en-4',
-                'post-en-5',
+        return array(
+            array(
+                'id' => 1,
+                'locale' => 'es',
+                'slug' => 'post-es-1',
+                'description' => 'description'
             ),
-            'es'  => array(
-                'post-es-1',
-                'post-es-2',
-                'post-es-3',
-                'post-es-4',
-                'post-es-5',
-            )
+            array(
+                'id' => 2,
+                'locale' => 'es',
+                'slug' => 'post-es-2',
+                'description' => 'description'
+            ),
+            array(
+                'id' => 3,
+                'locale' => 'es',
+                'slug' => 'post-es-3',
+                'description' => 'description'
+            ),
+            array(
+                'id' => 4,
+                'locale' => 'en',
+                'slug' => 'post-en-1',
+                'description' => 'description'
+            ),
+            array(
+                'id' => 5,
+                'locale' => 'en',
+                'slug' => 'post-en-2',
+                'description' => 'description'
+            ),
+            array(
+                'id' => 6,
+                'locale' => 'en',
+                'slug' => 'post-en-3',
+                'description' => 'description'
+            ),
         );
-
-        return $posts[$locale];
     }
 }
  

@@ -3,7 +3,12 @@
 {% block body %}
     <div class="row">
         <div class="col-xs-12">
-            <h1>{{ post }}</h1>
+            <h1>{{ post.slug }}</h1>
+            <ul>
+                <li>id: {{ post.id }}</li>
+                <li>locale: {{ post.locale }}</li>
+                <li>description: {{ post.description }}</li>
+            </ul>
         </div>
     </div>
 {% endblock %}
