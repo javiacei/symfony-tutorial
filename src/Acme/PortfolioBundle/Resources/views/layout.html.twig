@@ -24,10 +24,22 @@
                 <h1>{{ section }}</h1>
             {% endif %}
         </div>
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="row">
+                <div class="col-xs-8 col-xs-offset-2">
+                    <div class="alert alert-success alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                        {{ flashMessage }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
         <div class="container-fluid">
             {% block body %}
 
             {% endblock %}
         </div>
+        {% block javascripts '' %}
     </body>
 </html>

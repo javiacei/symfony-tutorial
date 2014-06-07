@@ -3,6 +3,10 @@ portfolio_home_index:
     path: /
     defaults: { _controller: 'AcmePortfolioBundle:Home:index' }
 
+portfolio_home_accept_cookies:
+    path: /accept-cookies
+    defaults: { _controller: 'AcmePortfolioBundle:Home:acceptCookies' }
+
 
 portfolio_about_index:
     path: /about.{_format}
