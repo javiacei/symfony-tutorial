@@ -95,11 +95,7 @@ class BlogController extends Controller
             }
         }
 
-        return $this->redirect($this->generateUrl('portfolio_home_index'));
-
-        return $this->forward('AcmePortfolioBundle:Blog:list', array(
-            'locale'  => $locale
-        ));
+        throw $this->createNotFoundException("Post with slug '" . $slug . "' not found");
     }
 
     public function getPosts()
