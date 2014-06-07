@@ -3,6 +3,7 @@
 namespace Acme\PortfolioBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,16 +16,26 @@ class AboutController extends Controller
 {
     public function indexAction(Request $request)
     {
+        $response = null;
         $githubUrl = "https://api.github.com/users/symfony/repos";
         $projects = $this->curl($githubUrl, $request);
 
-        return $this->render(
-            'AcmePortfolioBundle:About:index.html.twig',
-            array(
-                'section' => 'About',
-                'projects' => $projects
-            )
-        );
+        if ('html' === $request->getRequestFormat()) {
+            $response = new Response(
+                $this->renderView('AcmePortfolioBundle:About:index.html.twig',
+                    array(
+                        'section' => 'About',
+                        'projects' => $projects
+                    )
+                )
+            );
+        }
+
+        if ('json' === $request->getRequestFormat()) {
+            $response = new JsonResponse($projects);
+        }
+
+        return $response;
     }
 
     protected function curl($url, Request $request)

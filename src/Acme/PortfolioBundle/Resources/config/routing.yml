@@ -5,8 +5,8 @@ portfolio_home_index:
 
 
 portfolio_about_index:
-    path: /about
-    defaults: { _controller: 'AcmePortfolioBundle:About:index' }
+    path: /about.{_format}
+    defaults: { _controller: 'AcmePortfolioBundle:About:index', _format: html }
 
 
 portfolio_blog:
