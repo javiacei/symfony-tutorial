@@ -24,6 +24,19 @@
                 <h1>{{ section }}</h1>
             {% endif %}
         </div>
+        {% if not app.session.get('cookies_accepted') %}
+            <div class="row">
+                <div class="col-xs-8 col-xs-offset-2">
+                    <div class="alert alert-success alert-dismissable">
+                        <a href="{{ path('portfolio_home_accept_cookies') }}" class="close" data-dismiss="alert" aria-hidden="true">
+                            &times;
+                        </a>
+                        By removing this alert you are accepting the following Cookie Policy
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
         {% for flashMessage in app.session.flashbag.get('success') %}
             <div class="row">
                 <div class="col-xs-8 col-xs-offset-2">

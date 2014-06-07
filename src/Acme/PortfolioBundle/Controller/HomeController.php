@@ -15,15 +15,6 @@ class HomeController extends Controller
 {
     public function indexAction()
     {
-        $session = $this->get('session');
-
-        if (false == $session->get('cookies_accepted')) {
-            $session->getFlashBag()->add(
-                'success',
-                'By removing this alert you are accepting the following Cookie Policy'
-            );
-        }
-
         return $this->render(
             'AcmePortfolioBundle:Home:index.html.twig',
             array(

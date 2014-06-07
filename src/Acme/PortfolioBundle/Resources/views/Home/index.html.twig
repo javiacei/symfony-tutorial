@@ -3,15 +3,3 @@
 {% block body %}
     <h1>Home</h1>
 {% endblock %}
-
-{% block javascripts %}
-    <script type="text/javascript">
-        $(function () {
-            $('body').on('click', '.alert .close', function () {
-                $.ajax({
-                    url: '/accept-cookies'
-                })
-            });
-        });
-    </script>
-{% endblock %}
