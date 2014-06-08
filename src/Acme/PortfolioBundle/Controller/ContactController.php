@@ -3,6 +3,7 @@
 namespace Acme\PortfolioBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -14,7 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
  */
 class ContactController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $form = $this->createFormBuilder()
             ->add('name', 'text')
@@ -31,6 +32,14 @@ class ContactController extends Controller
             ->add('terms', 'checkbox')
             ->add('send', 'submit')
             ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $this->get('session')->getFlashBag()->add('success', 'You have successfully sent the request');
+
+            return $this->redirect($this->generateUrl('portfolio_home_index'));
+        }
 
         return $this->render(
             'AcmePortfolioBundle:Contact:index.html.twig',
