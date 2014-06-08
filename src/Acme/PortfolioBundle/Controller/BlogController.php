@@ -100,39 +100,51 @@ class BlogController extends Controller
         return array(
             array(
                 'id' => 1,
+                'date' => new \DateTime('2014-02-21'),
+                'rating' => 3.4,
                 'locale' => 'es',
                 'slug' => 'post-es-1',
-                'description' => 'description'
+                'description' => 'This is a <span>long <b>long</b> description</span>'
             ),
             array(
                 'id' => 2,
+                'date' => new \DateTime('2014-02-23'),
+                'rating' => 2.9,
                 'locale' => 'es',
                 'slug' => 'post-es-2',
-                'description' => 'description'
+                'description' => 'This is a <span>long <b>long</b> description</span>'
             ),
             array(
                 'id' => 3,
+                'date' => new \DateTime('2014-02-27'),
+                'rating' => 4.0,
                 'locale' => 'es',
                 'slug' => 'post-es-3',
-                'description' => 'description'
+                'description' => 'This is a <span>long <b>long</b> description</span>'
             ),
             array(
                 'id' => 4,
+                'date' => new \DateTime('2014-03-11'),
+                'rating' => 5.2,
                 'locale' => 'en',
                 'slug' => 'post-en-1',
-                'description' => 'description'
+                'description' => 'This is a <span>long <b>long</b> description</span>'
             ),
             array(
                 'id' => 5,
+                'date' => new \DateTime('2014-03-15'),
+                'rating' => 5,
                 'locale' => 'en',
                 'slug' => 'post-en-2',
-                'description' => 'description'
+                'description' => 'This is a <span>long <b>long</b> description</span>'
             ),
             array(
                 'id' => 6,
+                'date' => new \DateTime('2014-03-20'),
+                'rating' => 7.7,
                 'locale' => 'en',
                 'slug' => 'post-en-3',
-                'description' => 'description'
+                'description' => 'This is a <span>long <b>long</b> description</span>'
             ),
         );
     }
