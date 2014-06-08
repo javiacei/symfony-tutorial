@@ -18,6 +18,7 @@ class ContactController extends Controller
     public function indexAction(Request $request)
     {
         $form = $this->createFormBuilder()
+            ->setAction($this->generateUrl('portfolio_contact_index'))
             ->add('name', 'text')
             ->add('email', 'email')
             ->add('company', 'text')
@@ -26,7 +27,9 @@ class ContactController extends Controller
                 'expanded' => true
             ))
             ->add('currency', 'currency')
-            ->add('contractDate', 'date')
+            ->add('contractDate', 'date', array(
+                'widget' => 'single_text'
+            ))
             ->add('country', 'country')
             ->add('message', 'textarea')
             ->add('terms', 'checkbox')

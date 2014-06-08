@@ -7,5 +7,78 @@
 {% block body %}
     <h4>If you want to hire me, fill the following form:</h4>
     <hr/>
-    {{ form(form) }}
+    {{ form_start(form, {'attr': {'class': 'form-horizontal', 'novalidate': 'true' }}) }}
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+            {{ form_label(form.name, 'Your name', {'label_attr': {'class': 'control-label col-sm-2' }}) }}
+            <div class="col-sm-8">
+                {{ form_widget(form.name, {'attr': {'class': 'form-control' }}) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.email, 'Your email', {'label_attr': {'class': 'control-label col-sm-2' }}) }}
+            <div class="col-sm-6">
+                {{ form_widget(form.email, {'attr': {'class': 'form-control' }}) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.company, 'Your email', {'label_attr': {'class': 'control-label col-sm-2' }}) }}
+            <div class="col-sm-4">
+                {{ form_widget(form.company, {'attr': {'class': 'form-control' }}) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.salary, 'Your salary', {'label_attr': {'class': 'control-label col-sm-2' }}) }}
+            <div class="col-sm-4">
+                {{ form_widget(form.salary) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.currency, 'Paying in', {'label_attr': {'class': 'control-label col-sm-2' }}) }}
+            <div class="col-sm-4">
+                {{ form_widget(form.currency, {'attr': {'class': 'form-control' }}) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.contractDate, 'Contract date', {'label_attr': {'class': 'control-label col-sm-2' }}) }}
+            <div class="col-sm-4">
+                {{ form_widget(form.contractDate, {'attr': {'class': 'form-control' }}) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.country, 'You are from', {'label_attr': {'class': 'control-label col-sm-2' }}) }}
+            <div class="col-sm-4">
+                {{ form_widget(form.country, {'attr': {'class': 'form-control' }}) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.message, 'You message', {'label_attr': {'class': 'control-label col-sm-2' }}) }}
+            <div class="col-sm-6">
+                {{ form_widget(form.message, {'attr': {'class': 'form-control', 'rows': 5 }}) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    {{ form_label(form.terms, 'Accept terms of service') }}
+                    {{ form_widget(form.terms) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+                {{ form_row(form.send, {'attr': {'class': 'btn btn-primary btn-block' }}) }}
+            </div>
+        </div>
+    {{ form_end(form) }}
 {% endblock %}
