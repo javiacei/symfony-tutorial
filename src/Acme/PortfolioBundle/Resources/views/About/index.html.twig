@@ -20,6 +20,8 @@
                                 <span class="label label-primary">{{ project.default_branch }}</span>
                             </p>
                         </a>
+                    {% else %}
+                        You have no projects
                     {% endfor %}
                 </div>
             </div>
@@ -27,11 +29,23 @@
                 <h2>Skills</h2>
                 <hr/>
 
-                {% set skills = ['HTML', 'CSS', 'PHP', 'Symfony'] %}
+                {% set skills = ['HTML', 'CSS', 'PHP', 'Symfony', 'Drupal', 'Django'] %}
 
-                {% if skills|length > 0 %}
-                    {{ skills|join(', ') }}
-                {% endif %}
+                <div>
+                    {% if skills|length > 0 %}
+                        {{ skills|join(', ') }}
+                    {% endif %}
+                </div>
+                <br/>
+                <div>
+                    {% if 'HTML' in skills and 'CSS' in skills %}
+                        You seem to be a UI Developer
+                    {% endif %}
+                </div>
+                <br/>
+                <div class="alert {{ skills|length > 5 ? 'alert-success' : 'alert-danger' }}">
+                    {{ skills|length > 5 ? 'I am a Senior Developer' : 'I am a junior developer' }}
+                </div>
             </div>
         </div>
     </div>
