@@ -1,5 +1,9 @@
 {% extends "AcmePortfolioBundle::layout.html.twig" %}
 
+{% if section is defined %}
+    {% set body_class = 'body-' ~ section|lower %}
+{% endif %}
+
 {% block body %}
     <div class="col-xs-12">
         <h2>My projects</h2>

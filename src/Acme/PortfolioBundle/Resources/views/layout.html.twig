@@ -8,7 +8,7 @@
         <script type="text/javascript" src="{{ asset('bundles/acmeportfolio/js/jquery-2.1.1.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bundles/acmeportfolio/js/bootstrap.min.js') }}"></script>
     </head>
-    <body>
+    <body{% if body_class is defined %} class="{{ body_class }}"{% endif %}>
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">

@@ -1,5 +1,9 @@
 {% extends "AcmePortfolioBundle::layout.html.twig" %}
 
+{% if section is defined %}
+    {% set body_class = 'body-' ~ section|lower %}
+{% endif %}
+
 {% block body %}
     <h2>Blog posts in {{ locale }}</h2>
     <ul>
