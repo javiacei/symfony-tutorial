@@ -1,0 +1,17 @@
+{% import "AcmePortfolioBundle::macros.html.twig" as macros %}
+
+{% if not app.session.get('cookies_accepted') %}
+    {{ macros.alert('success', 'By removing this alert you are accepting the following Cookie Policy', path('portfolio_home_accept_cookies')) }}
+{% endif %}
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+    {{ macros.alert('success', flashMessage) }}
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('error') %}
+    {{ macros.alert('error', flashMessage) }}
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('warning') %}
+    {{ macros.alert('warning', flashMessage) }}
+{% endfor %}

@@ -1,4 +1,5 @@
 {% extends "AcmePortfolioBundle::layout.html.twig" %}
+{% import "AcmePortfolioBundle::macros.html.twig" as macros %}
 
 {% if section is defined %}
     {% set body_class = 'body-' ~ section|lower %}
@@ -12,14 +13,7 @@
                 <hr/>
                 <div class="list-group">
                     {% for project in projects %}
-                        <a class="list-group-item" href="{{ project.html_url }}" target="_blank">
-                            <h4 class="list-group-item-heding">{{ project.name }}</h4>
-
-                            <p class="list-group-item-text">
-                                {{ project.language }}
-                                <span class="label label-primary">{{ project.default_branch }}</span>
-                            </p>
-                        </a>
+                        {% include "AcmePortfolioBundle:About:project.html.twig" with {'item': project} %}
                     {% else %}
                         You have no projects
                     {% endfor %}
@@ -43,9 +37,7 @@
                     {% endif %}
                 </div>
                 <br/>
-                <div class="alert {{ skills|length > 5 ? 'alert-success' : 'alert-danger' }}">
-                    {{ skills|length > 5 ? 'I am a Senior Developer' : 'I am a junior developer' }}
-                </div>
+                {{ skills|length > 5 ? macros.alert('success', 'I am a Senior Developer') : macros.alert('danger', 'I am a junior developer') }}
             </div>
         </div>
     </div>

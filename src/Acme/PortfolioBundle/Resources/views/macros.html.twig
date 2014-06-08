@@ -1,0 +1,12 @@
+{% macro alert(type, message, href) %}
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <div class="alert alert-{{ type }} alert-dismissable">
+                <a href="{{ href }}" class="close" data-dismiss="alert" aria-hidden="true">
+                    &times;
+                </a>
+                {{ message }}
+            </div>
+        </div>
+    </div>
+{% endmacro %}
