@@ -35,5 +35,16 @@ class HomeController extends Controller
 
         return new Response();
     }
+
+    /**
+     * @Template("AcmePortfolioBundle:Home:current-job.html.twig")
+     */
+    public function currentJobAction()
+    {
+        return array(
+            'company' => 'Google',
+            'position' => 'General Manager'
+        );
+    }
 }
  
