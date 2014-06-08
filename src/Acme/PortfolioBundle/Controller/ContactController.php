@@ -2,6 +2,7 @@
 
 namespace Acme\PortfolioBundle\Controller;
 
+use Acme\PortfolioBundle\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,24 +18,7 @@ class ContactController extends Controller
 {
     public function indexAction(Request $request)
     {
-        $form = $this->createFormBuilder()
-            ->setAction($this->generateUrl('portfolio_contact_index'))
-            ->add('name', 'text')
-            ->add('email', 'email')
-            ->add('company', 'text')
-            ->add('salary', 'choice', array(
-                'choices' => array(10000, 20000),
-                'expanded' => true
-            ))
-            ->add('currency', 'currency')
-            ->add('contractDate', 'date', array(
-                'widget' => 'single_text'
-            ))
-            ->add('country', 'country')
-            ->add('message', 'textarea')
-            ->add('terms', 'checkbox')
-            ->add('send', 'submit')
-            ->getForm();
+        $form = $this->createForm(new ContactType($this->get('router')));
 
         $form->handleRequest($request);
 
