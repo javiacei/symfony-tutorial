@@ -19,6 +19,8 @@ class AppKernel extends Kernel
 
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+
             new \Acme\PortfolioBundle\AcmePortfolioBundle()
         );
 
