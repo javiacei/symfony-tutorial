@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+use Acme\PortfolioBundle\Entity\Post;
+
 /**
  * BlogController
  *
@@ -53,7 +55,7 @@ class BlogController extends Controller
         $posts = $this->getPosts();
 
         foreach($posts as $post) {
-            if ($post['locale'] === $locale) {
+            if ($post->getLocale() === $locale) {
                 $localePosts[] = $post;
             }
         }
@@ -83,7 +85,7 @@ class BlogController extends Controller
         $posts = $this->getPosts();
 
         foreach($posts as $post) {
-            if ($post['locale'] === $locale && $post['slug'] === $slug) {
+            if ($post->getLocale() === $locale && $post->getSlug() === $slug) {
                 return array(
                     'section' => 'Blog',
                     'locale'  => $locale,
@@ -97,56 +99,43 @@ class BlogController extends Controller
 
     public function getPosts()
     {
-        return array(
-            array(
-                'id' => 1,
-                'date' => new \DateTime('2014-02-21'),
-                'rating' => 3.4,
-                'locale' => 'es',
-                'slug' => 'post-es-1',
-                'description' => 'This is a <span>long <b>long</b> description</span>'
-            ),
-            array(
-                'id' => 2,
-                'date' => new \DateTime('2014-02-23'),
-                'rating' => 2.9,
-                'locale' => 'es',
-                'slug' => 'post-es-2',
-                'description' => 'This is a <span>long <b>long</b> description</span>'
-            ),
-            array(
-                'id' => 3,
-                'date' => new \DateTime('2014-02-27'),
-                'rating' => 4.0,
-                'locale' => 'es',
-                'slug' => 'post-es-3',
-                'description' => 'This is a <span>long <b>long</b> description</span>'
-            ),
-            array(
-                'id' => 4,
-                'date' => new \DateTime('2014-03-11'),
-                'rating' => 5.2,
-                'locale' => 'en',
-                'slug' => 'post-en-1',
-                'description' => 'This is a <span>long <b>long</b> description</span>'
-            ),
-            array(
-                'id' => 5,
-                'date' => new \DateTime('2014-03-15'),
-                'rating' => 5,
-                'locale' => 'en',
-                'slug' => 'post-en-2',
-                'description' => 'This is a <span>long <b>long</b> description</span>'
-            ),
-            array(
-                'id' => 6,
-                'date' => new \DateTime('2014-03-20'),
-                'rating' => 7.7,
-                'locale' => 'en',
-                'slug' => 'post-en-3',
-                'description' => 'This is a <span>long <b>long</b> description</span>'
-            ),
-        );
+        $post1 = new Post();
+        $post1
+            ->setDate(new \DateTime('2014-02-21'))
+            ->setRating(3.4)
+            ->setLocale('es')
+            ->setSlug('post-es-1')
+            ->setDescription('This is a <span>long <b>long</b> description</span>')
+        ;
+
+        $post2 = new Post();
+        $post2
+            ->setDate(new \DateTime('2014-02-23'))
+            ->setRating(4.2)
+            ->setLocale('es')
+            ->setSlug('post-es-2')
+            ->setDescription('This is a <span>long <b>long</b> description</span>')
+        ;
+
+        $post3 = new Post();
+        $post3
+            ->setDate(new \DateTime('2014-02-25'))
+            ->setRating(5)
+            ->setLocale('en')
+            ->setSlug('post-en-1')
+            ->setDescription('This is a <span>long <b>long</b> description</span>')
+        ;
+
+        $post4 = new Post();
+        $post4
+            ->setDate(new \DateTime('2014-02-27'))
+            ->setRating(8.4)
+            ->setLocale('en')
+            ->setSlug('post-en-2')
+            ->setDescription('This is a <span>long <b>long</b> description</span>')
+        ;
+
+        return array($post1, $post2, $post3, $post4);
     }
 }
  

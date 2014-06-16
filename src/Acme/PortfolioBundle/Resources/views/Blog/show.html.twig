@@ -12,7 +12,7 @@
             <ul>
                 <li><b>id:</b> {{ attribute(post, 'id') }}</li>
                 <li><b>date:</b> {{ post.date|date(format="Y-m", timezone="UTC") }}</li>
-                <li><b>locale:</b> {{ post['locale'] }}</li>
+                <li><b>locale:</b> {{ post.locale }}</li>
                 <li><b>rating:</b> {{ post.rating|round(0, 'ceil') }}</li>
                 <li><b>description:</b> {{ post.description|title|raw }}</li>
             </ul>
