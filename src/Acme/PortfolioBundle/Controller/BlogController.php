@@ -55,7 +55,7 @@ class BlogController extends Controller
         $posts = $this
             ->get('doctrine.orm.default_entity_manager')
             ->getRepository('Acme\PortfolioBundle\Entity\Post')
-            ->findBy(array('locale' => $locale));
+            ->findByLocale($locale);
 
         return array(
             'section' => 'Blog',
