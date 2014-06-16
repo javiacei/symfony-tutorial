@@ -36,13 +36,14 @@ class BlogController extends Controller
     /**
      *
      * @Template()
-     * @Route("/{locale}.{_format}", name="portfolio_blog_list",
-     * defaults={
-     *      "_format": "html"
-     * },
-     * requirements={
-     *        "locale" = "en|es"
-     * })
+     *
+     * @Route(
+     *      "/{locale}.{_format}",
+     *      name="portfolio_blog_list",
+     *      defaults={
+     *          "_format": "html"
+     *      }
+     * )
      *
      * @param Request $request
      * @param         $locale
@@ -72,7 +73,7 @@ class BlogController extends Controller
      * @Template()
      * @Route("/{locale}/{slug}", name="portfolio_blog_show", requirements={
      *        "locale" = "en|es",
-     *        "slug" = "[a-z\-]+[1-9]"
+     *        "slug" = "[a-z\-]+"
      * })
      *
      * @param $locale
@@ -99,8 +100,10 @@ class BlogController extends Controller
 
     public function getPosts()
     {
-        // todo Retrieve posts from database
-        return array();
+        return $this
+            ->get('doctrine.orm.default_entity_manager')
+            ->getRepository('Acme\PortfolioBundle\Entity\Post')
+            ->findAll();
     }
 }
  
