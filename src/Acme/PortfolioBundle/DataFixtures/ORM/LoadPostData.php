@@ -9,50 +9,27 @@ use Acme\PortfolioBundle\Entity\Post;
 
 class LoadPostData implements FixtureInterface
 {
+    const NUMBER_OF_POSTS = 100;
+
     /**
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager)
     {
-        $post1 = new Post();
-        $post1
-            ->setDate(new \DateTime('2014-02-21'))
-            ->setRating(3.4)
-            ->setLocale('es')
-            ->setSlug('post-es-1')
-            ->setDescription('This is a <span>long <b>long</b> description</span>')
-        ;
-        $manager->persist($post1);
+        $faker = \Faker\Factory::create();
 
-        $post2 = new Post();
-        $post2
-            ->setDate(new \DateTime('2014-02-23'))
-            ->setRating(4.2)
-            ->setLocale('es')
-            ->setSlug('post-es-2')
-            ->setDescription('This is a <span>long <b>long</b> description</span>')
-        ;
-        $manager->persist($post2);
+        for ($i = 1; $i <= self::NUMBER_OF_POSTS; $i++) {
+            $post = new Post;
+            $post
+                ->setDate($faker->dateTimeThisYear)
+                ->setRating($faker->randomFloat(1, 1, 10))
+                ->setLocale($faker->languageCode)
+                ->setSlug($faker->slug)
+                ->setDescription($faker->text(1024))
+            ;
 
-        $post3 = new Post();
-        $post3
-            ->setDate(new \DateTime('2014-02-25'))
-            ->setRating(5)
-            ->setLocale('en')
-            ->setSlug('post-en-1')
-            ->setDescription('This is a <span>long <b>long</b> description</span>')
-        ;
-        $manager->persist($post3);
-
-        $post4 = new Post();
-        $post4
-            ->setDate(new \DateTime('2014-02-27'))
-            ->setRating(8.4)
-            ->setLocale('en')
-            ->setSlug('post-en-2')
-            ->setDescription('This is a <span>long <b>long</b> description</span>')
-        ;
-        $manager->persist($post4);
+            $manager->persist($post);
+        }
 
         $manager->flush();
     }
