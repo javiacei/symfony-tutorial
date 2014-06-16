@@ -97,5 +97,41 @@ class BlogController extends Controller
             'post'   => $post
         );
     }
+
+    /**
+     *
+     * @Template()
+     * @Route("/{locale}/{slug}/remove", name="portfolio_blog_remove", requirements={
+     *        "locale" = "[a-z\-]{2}",
+     *        "slug" = "[a-z\-]+"
+     * })
+     *
+     * @param $locale
+     * @param $slug
+     *
+     * @return Response
+     */
+    public function removeAction($locale, $slug)
+    {
+        $dm = $this->get('doctrine.orm.default_entity_manager');
+
+        $post = $dm
+            ->getRepository('Acme\PortfolioBundle\Entity\Post')
+            ->findOneBy(array(
+                'locale' => $locale,
+                'slug' => $slug
+            ));
+
+        if (null === $post) {
+            throw $this->createNotFoundException("Post with slug '" . $slug . "' not found");
+        }
+
+        $dm->remove($post);
+        $dm->flush();
+
+        return $this->redirect($this->generateUrl('portfolio_blog_list', array(
+            'locale' => $locale
+        )));
+    }
 }
  

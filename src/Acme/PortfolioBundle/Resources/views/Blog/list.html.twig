@@ -8,7 +8,14 @@
     <h2>Blog posts in {{ locale }}</h2>
     <ul>
         {% for post in posts %}
-            <li><a href="{{ path('portfolio_blog_show', {'locale': locale, 'slug': post.slug}) }}">{{ post.slug }}</a></li>
+            <li>
+                <a href="{{ path('portfolio_blog_show', {'locale': locale, 'slug': post.slug}) }}">
+                    {{ post.slug }}
+                </a>
+                <a href="{{ path('portfolio_blog_remove', {'locale': locale, 'slug': post.slug}) }}">
+                    <span class="glyphicon glyphicon-remove-circle"></span>
+                </a>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}
