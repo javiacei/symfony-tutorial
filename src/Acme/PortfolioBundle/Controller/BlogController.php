@@ -52,19 +52,15 @@ class BlogController extends Controller
      */
     public function listAction(Request $request, $locale)
     {
-        $localePosts = array();
-        $posts = $this->getPosts();
-
-        foreach($posts as $post) {
-            if ($post->getLocale() === $locale) {
-                $localePosts[] = $post;
-            }
-        }
+        $posts = $this
+            ->get('doctrine.orm.default_entity_manager')
+            ->getRepository('Acme\PortfolioBundle\Entity\Post')
+            ->findBy(array('locale' => $locale));
 
         return array(
             'section' => 'Blog',
             'locale'  => $locale,
-            'posts'   => $localePosts
+            'posts'   => $posts
         );
     }
 
