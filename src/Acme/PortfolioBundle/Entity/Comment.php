@@ -29,6 +29,12 @@ class Comment
     private $text;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
+     * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
+     */
+    private $post;
+
+    /**
      * Get id
      *
      * @return integer 

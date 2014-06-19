@@ -57,6 +57,31 @@ class Post
     private $description;
 
     /**
+     * @var Picture
+     *
+     * Unidirectional
+     *
+     * @ORM\OneToOne(targetEntity="Picture")
+     * @ORM\JoinColumn(name="picture_id", referencedColumnName="id")
+     */
+    private $picture;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="Post")
+     */
+    private $comments;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Category")
+     * @ORM\JoinTable(
+     *      name="posts_categories",
+     *      joinColumns={@ORM\JoinColumn(name="post_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}
+     * )
+     */
+    private $categories;
+
+    /**
      * Get id
      *
      * @return integer 
