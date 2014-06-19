@@ -56,7 +56,6 @@ class Post
      */
     private $description;
 
-
     /**
      * Get id
      *

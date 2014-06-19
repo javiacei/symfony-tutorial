@@ -5,12 +5,12 @@ namespace Acme\PortfolioBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Comment
+ * Category
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class Comment
+class Category
 {
     /**
      * @var integer
@@ -24,9 +24,10 @@ class Comment
     /**
      * @var string
      *
-     * @ORM\Column(name="text", type="string", length=1024)
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $text;
+    private $name;
+
 
     /**
      * Get id
@@ -39,25 +40,25 @@ class Comment
     }
 
     /**
-     * Set text
+     * Set name
      *
-     * @param string $text
-     * @return Comment
+     * @param string $name
+     * @return Category
      */
-    public function setText($text)
+    public function setName($name)
     {
-        $this->text = $text;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get text
+     * Get name
      *
      * @return string 
      */
-    public function getText()
+    public function getName()
     {
-        return $this->text;
+        return $this->name;
     }
 }
