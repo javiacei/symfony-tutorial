@@ -66,4 +66,27 @@ class Comment
     {
         return $this->text;
     }
+
+    /**
+     * Set post
+     *
+     * @param \Acme\PortfolioBundle\Entity\Post $post
+     * @return Comment
+     */
+    public function setPost(\Acme\PortfolioBundle\Entity\Post $post = null)
+    {
+        $this->post = $post;
+
+        return $this;
+    }
+
+    /**
+     * Get post
+     *
+     * @return \Acme\PortfolioBundle\Entity\Post 
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
 }

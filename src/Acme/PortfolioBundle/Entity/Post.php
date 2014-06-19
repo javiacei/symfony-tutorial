@@ -61,13 +61,13 @@ class Post
      *
      * Unidirectional
      *
-     * @ORM\OneToOne(targetEntity="Picture")
+     * @ORM\OneToOne(targetEntity="Picture", cascade={"all"})
      * @ORM\JoinColumn(name="picture_id", referencedColumnName="id")
      */
     private $picture;
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="Post")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="Post", cascade={"all"})
      */
     private $comments;
 
@@ -204,5 +204,102 @@ class Post
     public function getDescription()
     {
         return $this->description;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set picture
+     *
+     * @param \Acme\PortfolioBundle\Entity\Picture $picture
+     * @return Post
+     */
+    public function setPicture(\Acme\PortfolioBundle\Entity\Picture $picture = null)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return \Acme\PortfolioBundle\Entity\Picture 
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param \Acme\PortfolioBundle\Entity\Comment $comments
+     * @return Post
+     */
+    public function addComment(\Acme\PortfolioBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \Acme\PortfolioBundle\Entity\Comment $comments
+     */
+    public function removeComment(\Acme\PortfolioBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * Add categories
+     *
+     * @param \Acme\PortfolioBundle\Entity\Category $categories
+     * @return Post
+     */
+    public function addCategory(\Acme\PortfolioBundle\Entity\Category $categories)
+    {
+        $this->categories[] = $categories;
+
+        return $this;
+    }
+
+    /**
+     * Remove categories
+     *
+     * @param \Acme\PortfolioBundle\Entity\Category $categories
+     */
+    public function removeCategory(\Acme\PortfolioBundle\Entity\Category $categories)
+    {
+        $this->categories->removeElement($categories);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }
