@@ -60,10 +60,13 @@ class BlogController extends Controller
     {
         $em = $this->get('doctrine.orm.default_entity_manager');
 
-        $dql = 'SELECT p FROM Acme\PortfolioBundle\Entity\Post p JOIN p.categories c WHERE c.name = :categoryName';
+        $qb = $em->createQueryBuilder();
 
-        $posts = $em
-            ->createQuery($dql)
+        $posts = $qb
+            ->select('p')
+            ->from('Acme\PortfolioBundle\Entity\Post', 'p')
+            ->innerJoin('p.categories', 'c', 'WITH', 'c.name = :categoryName')
+            ->getQuery()
             ->setParameter('categoryName', $categoryName)
             ->getResult()
         ;
