@@ -58,38 +58,42 @@ class BlogController extends Controller
      */
     public function listAction(Request $request, $categoryName)
     {
-        $posts = $this
-            ->get('doctrine.orm.default_entity_manager')
-            ->getRepository('Acme\PortfolioBundle\Entity\Post')
-            ->findByCategoryName($categoryName);
+        $em = $this->get('doctrine.orm.default_entity_manager');
 
+        $dql = 'SELECT p FROM Acme\PortfolioBundle\Entity\Post p JOIN p.categories c WHERE c.name = :categoryName';
+
+        $posts = $em
+            ->createQuery($dql)
+            ->setParameter('categoryName', $categoryName)
+            ->getResult()
+        ;
+        
         return array(
-            'section' => 'Blog',
-            'categoryName'  => $categoryName,
-            'posts'   => $posts
+            'section'      => 'Blog',
+            'categoryName' => $categoryName,
+            'posts'        => $posts
         );
     }
 
     /**
      *
      * @Template()
-     * @Route("/{locale}/{slug}", name="portfolio_blog_show", requirements={
-     *        "locale" = "[a-z\-]{2}",
+     * @Route("/{categoryName}/{slug}", name="portfolio_blog_show", requirements={
+     *        "categoryName" = "[a-z]+",
      *        "slug" = "[a-z\-]+"
      * })
      *
-     * @param $locale
+     * @param $categoryName
      * @param $slug
      *
      * @return Response
      */
-    public function showAction($locale, $slug)
+    public function showAction($categoryName, $slug)
     {
         $post = $this
             ->get('doctrine.orm.default_entity_manager')
             ->getRepository('Acme\PortfolioBundle\Entity\Post')
             ->findOneBy(array(
-                'locale' => $locale,
                 'slug' => $slug
             ));
 
@@ -98,33 +102,31 @@ class BlogController extends Controller
         }
 
         return array(
-            'section' => 'Blog',
-            'locale'  => $locale,
-            'post'   => $post
+            'section'      => 'Blog',
+            'post'         => $post
         );
     }
 
     /**
      *
      * @Template()
-     * @Route("/{locale}/{slug}/remove", name="portfolio_blog_remove", requirements={
-     *        "locale" = "[a-z\-]{2}",
+     * @Route("/{categoryName}/{slug}/remove", name="portfolio_blog_remove", requirements={
+     *        "categoryName" = "[a-z]+",
      *        "slug" = "[a-z\-]+"
      * })
      *
-     * @param $locale
+     * @param $categoryName
      * @param $slug
      *
      * @return Response
      */
-    public function removeAction($locale, $slug)
+    public function removeAction($categoryName, $slug)
     {
         $dm = $this->get('doctrine.orm.default_entity_manager');
 
         $post = $dm
             ->getRepository('Acme\PortfolioBundle\Entity\Post')
             ->findOneBy(array(
-                'locale' => $locale,
                 'slug' => $slug
             ));
 
@@ -136,7 +138,7 @@ class BlogController extends Controller
         $dm->flush();
 
         return $this->redirect($this->generateUrl('portfolio_blog_list', array(
-            'locale' => $locale
+            'categoryName' => $categoryName
         )));
     }
 }
