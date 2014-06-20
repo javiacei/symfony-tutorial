@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+use Doctrine\ORM\Query\ResultSetMappingBuilder;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 use Acme\PortfolioBundle\Entity\Post;
@@ -28,10 +30,13 @@ class BlogController extends Controller
      */
     public function indexAction()
     {
-        $categories = $this
-            ->get('doctrine.orm.default_entity_manager')
-            ->getRepository('Acme\PortfolioBundle\Entity\Category')
-            ->findAll();
+        $em = $this->get('doctrine.orm.default_entity_manager');
+
+        $rsm = new ResultSetMappingBuilder($em);
+        $rsm->addRootEntityFromClassMetadata('Acme\PortfolioBundle\Entity\Category', 'c');
+
+        $query = $em->createNativeQuery("SELECT c.id, c.name FROM Category c", $rsm);
+        $categories = $query->getResult();
 
         return array(
             'section' => 'Blog',
