@@ -28,8 +28,14 @@ class BlogController extends Controller
      */
     public function indexAction()
     {
+        $categories = $this
+            ->get('doctrine.orm.default_entity_manager')
+            ->getRepository('Acme\PortfolioBundle\Entity\Category')
+            ->findAll();
+
         return array(
-            'section' => 'Blog'
+            'section' => 'Blog',
+            'categories' => $categories
         );
     }
 
@@ -38,7 +44,7 @@ class BlogController extends Controller
      * @Template()
      *
      * @Route(
-     *      "/{locale}.{_format}",
+     *      "/{categoryName}.{_format}",
      *      name="portfolio_blog_list",
      *      defaults={
      *          "_format": "html"
@@ -46,20 +52,20 @@ class BlogController extends Controller
      * )
      *
      * @param Request $request
-     * @param         $locale
+     * @param         $categoryName
      *
      * @return Response
      */
-    public function listAction(Request $request, $locale)
+    public function listAction(Request $request, $categoryName)
     {
         $posts = $this
             ->get('doctrine.orm.default_entity_manager')
             ->getRepository('Acme\PortfolioBundle\Entity\Post')
-            ->findByLocale($locale);
+            ->findByCategoryName($categoryName);
 
         return array(
             'section' => 'Blog',
-            'locale'  => $locale,
+            'categoryName'  => $categoryName,
             'posts'   => $posts
         );
     }
