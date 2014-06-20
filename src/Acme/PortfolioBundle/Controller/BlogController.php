@@ -64,17 +64,9 @@ class BlogController extends Controller
     public function listAction(Request $request, $categoryName)
     {
         $em = $this->get('doctrine.orm.default_entity_manager');
+        $repository = $em->getRepository('Acme\PortfolioBundle\Entity\Post');
 
-        $qb = $em->createQueryBuilder();
-
-        $posts = $qb
-            ->select('p')
-            ->from('Acme\PortfolioBundle\Entity\Post', 'p')
-            ->innerJoin('p.categories', 'c', 'WITH', 'c.name = :categoryName')
-            ->getQuery()
-            ->setParameter('categoryName', $categoryName)
-            ->getResult()
-        ;
+        $posts = $repository->getPostsOfCategoryWithName($categoryName);
         
         return array(
             'section'      => 'Blog',
