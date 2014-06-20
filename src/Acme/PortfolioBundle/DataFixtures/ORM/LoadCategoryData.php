@@ -21,7 +21,7 @@ class LoadCategoryData implements FixtureInterface, OrderedFixtureInterface
 
         for ($i = 1; $i <= self::NUMBER_OF_CATEGORIES; $i++) {
             $category = new Category();
-            $category->setName($faker->text(255));
+            $category->setName($faker->word(15));
 
             $manager->persist($category);
         }

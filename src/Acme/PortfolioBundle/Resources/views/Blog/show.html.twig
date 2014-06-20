@@ -7,15 +7,44 @@
 {% block body %}
     <div class="row">
         <div class="col-xs-12">
-            <h1>{{ post.slug }}</h1>
-            <hr/>
-            <ul>
-                <li><b>id:</b> {{ attribute(post, 'id') }}</li>
-                <li><b>date:</b> {{ post.date|date(format="Y-m", timezone="UTC") }}</li>
-                <li><b>locale:</b> {{ post.locale }}</li>
-                <li><b>rating:</b> {{ post.rating|round(0, 'ceil') }}</li>
-                <li><b>description:</b> {{ post.description|title|raw }}</li>
-            </ul>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1>
+                        <img src="{{ post.picture.url }}" />
+                        <span>{{ post.slug }}</span>
+                        <span class="badge">
+                            {% for category in post.categories %}
+                                {{ category.name }}{% if not loop.last %},{% endif %}
+                            {% endfor %}
+                        </span>
+                    </h1>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>id:</b> {{ attribute(post, 'id') }}</li>
+                        <li class="list-group-item"><b>date:</b> {{ post.date|date(format="Y-m", timezone="UTC") }}</li>
+                        <li class="list-group-item"><b>locale:</b> {{ post.locale }}</li>
+                        <li class="list-group-item"><b>rating:</b> {{ post.rating|round(0, 'ceil') }}</li>
+                        <li class="list-group-item"><b>description:</b> {{ post.description|title|raw }}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-warning">
+                <div class="panel-heading">Comments</div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        {% for comment in post.comments %}
+                            <li class="list-group-item">
+                                <span class="badge">
+                                    {{ comment.createdAt|date(format="Y-m-d H:i:s", timezone="UTC") }}
+                                </span>
+                                {{ comment.text }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

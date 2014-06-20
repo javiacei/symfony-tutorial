@@ -67,7 +67,7 @@ class Post
     private $picture;
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="Post", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", cascade={"all"})
      */
     private $comments;
 

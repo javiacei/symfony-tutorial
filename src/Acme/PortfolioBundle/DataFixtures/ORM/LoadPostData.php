@@ -62,7 +62,7 @@ class LoadPostData implements FixtureInterface, OrderedFixtureInterface, Contain
             // Comments (bidirectional - cascade)
             for($nComment = 1; $nComment <= self::COMMENTS_PER_POST; $nComment++) {
                 $comment = new Comment();
-                $comment->setText($faker->text(1024));
+                $comment->setText($faker->text(50));
 
                 $comment->setPost($post);
                 $post->addComment($comment);
