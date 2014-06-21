@@ -28,7 +28,12 @@ class PostType extends AbstractType
                 'multiple' => true,
                 'property' => 'name'
             ))
+            // Embedded (1)
             ->add('picture', new PictureType())
+            // Embedded (N)
+            ->add('comments', 'collection', array(
+                'type' => new CommentType()
+            ))
             ->add('send', 'submit')
         ;
     }

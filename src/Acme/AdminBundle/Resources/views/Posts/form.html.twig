@@ -6,5 +6,25 @@
     </div>
 
     {{ form_start(form) }}
+
+        <h3>Basic information</h3>
+        {{ form_row(form.date) }}
+        {{ form_row(form.rating) }}
+        {{ form_row(form.locale) }}
+        {{ form_row(form.slug) }}
+        {{ form_row(form.description) }}
+
+        <h3>Picture</h3>
+        {{ form_row(form.picture) }}
+
+        <h3>Categories</h3>
+        {{ form_row(form.categories) }}
+
+        <h3>Comments</h3>
+        <ul class="comments">
+            {% for comment in form.comments %}
+                <li>{{ form_row(comment.text) }}</li>
+            {% endfor %}
+        </ul>
     {{ form_end(form) }}
 {% endblock %}
