@@ -1,0 +1,71 @@
+Acme\PortfolioBundle\Entity\Post:
+    constraints:
+            - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: slug
+    properties:
+        date:
+            - Date:
+                message: 'This date is not a valid date'
+            - NotBlank: ~
+        rating:
+            - Type:
+                type: float
+            - Range:
+                min: 0
+                max: 10
+                minMessage: 'This value should be {{ limit }} or more'
+                maxMessage: 'This value should be {{ limit }} or less'
+        locale:
+            - Type:
+                type: string
+            - NotBlank: ~
+        slug:
+            - Type:
+                type: string
+            - NotBlank: ~
+            - Length:
+                min: 2
+                max: 255
+            - Regex:
+                pattern: "/^[a-z\-]+$/i"
+        description:
+            - Type:
+                type: string
+            - Length:
+                min: 10
+                max: 1024
+
+Acme\PortfolioBundle\Entity\Picture:
+    properties:
+        url:
+            - Url: ~
+
+        title:
+            - Type:
+                type: string
+            - NotBlank: ~
+            - Length:
+                min: 2
+                max: 255
+
+Acme\PortfolioBundle\Entity\Comment:
+    properties:
+        text:
+            - Type:
+                type: string
+            - NotBlank: ~
+            - Length:
+                min: 10
+                max: 1024
+
+Acme\PortfolioBundle\Entity\Category:
+    constraints:
+            - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: name
+    properties:
+        name:
+            - Type:
+                type: string
+            - NotBlank: ~
+            - Length:
+                max: 15
+            - Regex: 
+                pattern: "/^[a-z\-]+$/i"
