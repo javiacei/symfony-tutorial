@@ -23,18 +23,36 @@
         {% include "AcmePortfolioBundle::flash-messages.html.twig" %}
 
         <div class="container-fluid">
+
             <div class="row">
+
+                <!-- Left panel -->
                 <div class="col-md-2">
-                    <div class="panel panel-default">
+                    
+                    <!-- Post -->
+                    <div class="panel panel-primary">
                         <div class="panel-heading">Post</div>
-                            <div class="panel-body">
-                                <ul>
-                                    <li><a href="{{ path('admin_posts_list') }}">List</a></li>
-                                    <li><a href="{{ path('admin_posts_create') }}">Create</a></li>
-                                </ul>
-                            </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="{{ path('admin_posts_list') }}">List</a></li>
+                                <li><a href="{{ path('admin_posts_create') }}">Create</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Category -->
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">Category</div>
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="{{ path('admin_category_list') }}">List</a></li>
+                                <li><a href="{{ path('admin_category_create') }}">Create</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Principal panel -->
                 <div class="col-md-10">
                     {% block body %} {% endblock %}
                 </div>
