@@ -31,7 +31,7 @@ class Post
     /**
      * @var float
      *
-     * @ORM\Column(name="rating", type="float")
+     * @ORM\Column(name="rating", type="float", nullable=true)
      */
     private $rating;
 
@@ -45,14 +45,14 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
     private $slug;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=1024)
+     * @ORM\Column(name="description", type="string", length=1024, nullable=true)
      */
     private $description;
 

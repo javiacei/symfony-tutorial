@@ -15,7 +15,10 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('text', 'text')
+            ->add('text', 'textarea', array(
+                'required' => true,
+                'max_length' => 1024
+            ))
         ;
     }
     

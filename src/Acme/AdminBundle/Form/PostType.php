@@ -15,21 +15,33 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
+            ->add('date', 'date', array(
+                'required' => true
+            ))
             ->add('rating', 'number', array(
-                'precision' => 1
+                'precision' => 1,
+                'required' => false
             ))
             ->add('locale', 'country', array(
+                'required' => true
             ))
-            ->add('slug', 'text')
-            ->add('description', 'text')
+            ->add('slug', 'text', array(
+                'required' => true,
+                'max_length' => 255
+            ))
+            ->add('description', 'text', array(
+                'required' => false
+            ))
             ->add('categories', 'entity', array(
                 'class'    => 'Acme\PortfolioBundle\Entity\Category',
                 'multiple' => true,
-                'property' => 'name'
+                'property' => 'name',
+                'required' => true
             ))
             // Embedded (1)
-            ->add('picture', new PictureType())
+            ->add('picture', new PictureType(), array(
+                'required' => false
+            ))
             // Embedded (N)
             ->add('comments', 'collection', array(
                 'type'         => new CommentType(),
