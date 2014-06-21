@@ -41,68 +41,65 @@ class PostsController extends Controller
     }
 
     /**
-     * @Route("/create", name="admin_posts_create")
-     * @Template()
+     * processForm
+     *
+     * @param Post $post
+     * @param string $action
+     * @return Response
      */
-    public function createAction(Request $request)
+    private function processForm(Post $post, $action)
     {
-        // Create new Post
-        $post = new Post();
+        $em = $this->get('doctrine.orm.default_entity_manager');
+        $request = $this->getRequest();
 
         $form = $this->createForm(new PostType(), $post);
 
-        $form->handleRequest($request);
+        if ($form->handleRequest($request)->isValid()) {
+            // Inform user that a new Post has been created
+            $flashMessage = ($post->getId()) 
+                ? "Post with id '{$post->getId()}' updated successfully" 
+                : 'New post created successfully';
 
-        if ($form->isValid()) {
+            $this->get('session')->getFlashBag()->add('success', $flashMessage);
+
             // Save into database
-            $em = $this->get('doctrine.orm.default_entity_manager');
-
             $em->persist($post);
             $em->flush();
-
-            // Inform user that a new Post has been created
-            $this->get('session')->getFlashBag()->add('success', 'You have successfully create a new Post');
 
             // Redirect to list of posts
             return $this->redirect($this->generateUrl('admin_posts_list'));
         }
 
-        return $this->render('AcmeAdminBundle:Posts:create.html.twig', array(
-            'form' => $form->createView()
+        return $this->render('AcmeAdminBundle:Posts:form.html.twig', array(
+            'form'   => $form->createView(),
+            'post'   => $post,
+            'action' => $action
         ));
     }
 
     /**
+     * @Route("/create", name="admin_posts_create")
+     */
+    public function createAction(Request $request)
+    {
+        return $this->processForm(new Post(), 'create');
+    }
+
+    /**
      * @Route("/{id}/edit", name="admin_posts_edit")
-     * @Template()
      */
     public function editAction(Request $request, $id)
     {
-        $em = $this->get('doctrine.orm.default_entity_manager');
+        $post = $this
+            ->get('doctrine.orm.default_entity_manager')
+            ->getRepository('Acme\PortfolioBundle\Entity\Post')
+            ->findOneById($id)
+        ;
 
-        // Create new Post
-        $post = $em->getRepository('Acme\PortfolioBundle\Entity\Post')->findOneById($id);
-
-        $form = $this->createForm(new PostType(), $post);
-
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            // Save into database
-
-            $em->persist($post);
-            $em->flush();
-
-            // Inform user that a new Post has been created
-            $this->get('session')->getFlashBag()->add('success', 'You have successfully update an existing Post');
-
-            // Redirect to list of posts
-            return $this->redirect($this->generateUrl('admin_posts_list'));
+        if (null === $post) {
+            throw $this->createNotFoundException("Post with id '" . $id . "' not found");
         }
 
-        return $this->render('AcmeAdminBundle:Posts:edit.html.twig', array(
-            'form' => $form->createView(),
-            'post' => $post
-        ));
+        return $this->processForm($post, 'edit');
     }
 }
