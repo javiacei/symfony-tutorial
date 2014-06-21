@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Symfony Tutorial</title>
+        <link rel="stylesheet" href="{{ asset('bundles/acmeadmin/css/bootstrap.css') }}"/>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Symfony Tutorial - Admin</a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Profile</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="jumbotron"></div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Post</div>
+                            <div class="panel-body">
+                                <ul>
+                                    <li><a href="{{ path('admin_posts_list') }}">List</a></li>
+                                    <li><a href="{{ path('admin_posts_create') }}">Create</a></li>
+                                </ul>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    {% block body %} {% endblock %}
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="{{ asset('bundles/acmeadmin/js/jquery-2.1.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/acmeadmin/js/bootstrap.min.js') }}"></script>
+
+        {% block javascripts '' %}
+
+    </body>
+</html>

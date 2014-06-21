@@ -1,0 +1,34 @@
+{% extends "AcmeAdminBundle::layout.html.twig" %}
+
+{% block body %}
+    <div class="page-header">
+        <h1>Post <small>list</small></h1>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>picture</th>
+                <th>slug</th>
+                <th>date</th>
+                <th>rating</th>
+                <th>categories</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                <td><img class="img-circle" src="{{ post.picture.url }}"/></td>
+                <td>{{ post.slug }}</td>
+                <td>{{ post.date|date(format="Y-m-d H:i:s", timezone="UTC") }}</td>
+                <td>{{ post.rating }}</td>
+                <td>
+                    {% for category in post.categories %}
+                        {{ category.name }}{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
