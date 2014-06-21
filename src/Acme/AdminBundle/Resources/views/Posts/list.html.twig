@@ -13,6 +13,7 @@
                 <th>date</th>
                 <th>rating</th>
                 <th>categories</th>
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
@@ -33,6 +34,7 @@
                         {{ category.name }}{% if not loop.last %},{% endif %}
                     {% endfor %}
                 </td>
+                <td><a href="{{ path('admin_posts_edit', {'id': post.id }) }}">Edit</a></td>
             </tr>
         {% endfor %}
         </tbody>

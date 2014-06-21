@@ -68,7 +68,41 @@ class PostsController extends Controller
         }
 
         return $this->render('AcmeAdminBundle:Posts:create.html.twig', array(
-            'form'=> $form->createView()
+            'form' => $form->createView()
+        ));
+    }
+
+    /**
+     * @Route("/{id}/edit", name="admin_posts_edit")
+     * @Template()
+     */
+    public function editAction(Request $request, $id)
+    {
+        $em = $this->get('doctrine.orm.default_entity_manager');
+
+        // Create new Post
+        $post = $em->getRepository('Acme\PortfolioBundle\Entity\Post')->findOneById($id);
+
+        $form = $this->createForm(new PostType(), $post);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            // Save into database
+
+            $em->persist($post);
+            $em->flush();
+
+            // Inform user that a new Post has been created
+            $this->get('session')->getFlashBag()->add('success', 'You have successfully update an existing Post');
+
+            // Redirect to list of posts
+            return $this->redirect($this->generateUrl('admin_posts_list'));
+        }
+
+        return $this->render('AcmeAdminBundle:Posts:edit.html.twig', array(
+            'form' => $form->createView(),
+            'post' => $post
         ));
     }
 }
