@@ -34,6 +34,16 @@ Acme\PortfolioBundle\Entity\Post:
                 min: 10
                 max: 1024
 
+        picture:
+            - Valid: ~
+
+        comments:
+            - Valid: ~
+
+        categories:
+            - Count:
+                min: 1
+
 Acme\PortfolioBundle\Entity\Picture:
     properties:
         url:
