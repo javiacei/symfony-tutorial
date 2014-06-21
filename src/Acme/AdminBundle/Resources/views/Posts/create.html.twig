@@ -4,4 +4,14 @@
     <div class="page-header">
         <h1>Post <small>create</small></h1>
     </div>
+
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        {{ form_row(form.date) }}
+        {{ form_row(form.rating) }}
+        {{ form_row(form.locale) }}
+        {{ form_row(form.slug) }}
+        {{ form_row(form.description) }}
+    {{ form_end(form) }}
 {% endblock %}

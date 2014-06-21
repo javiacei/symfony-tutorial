@@ -18,7 +18,13 @@
         <tbody>
         {% for post in posts %}
             <tr>
-                <td><img class="img-circle" src="{{ post.picture.url }}"/></td>
+                <td>
+                    {% if post.picture %}
+                        <img class="img-circle" src="{{ post.picture.url }}"/>
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
                 <td>{{ post.slug }}</td>
                 <td>{{ post.date|date(format="Y-m-d H:i:s", timezone="UTC") }}</td>
                 <td>{{ post.rating }}</td>
