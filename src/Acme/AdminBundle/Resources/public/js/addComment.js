@@ -21,4 +21,9 @@ $(document).ready(function() {
         // add a new comment form (see code in file addForm.js)
         addForm($collectionHolder, $newLinkLi);
     });
+
+    // add a delete link to all of the existing comments form li elements
+    $collectionHolder.find('li').each(function() {
+        addFormDeleteLink($(this));
+    });
 });

@@ -15,4 +15,18 @@ function addForm($collectionHolder, $newLinkLi) {
     // Display the form in the page in an li, before the "Add a element" link li
     var $newFormLi = $('<li></li>').append(newForm);
     $newLinkLi.before($newFormLi);
+
+    addFormDeleteLink($newFormLi);
+}
+
+function addFormDeleteLink($formLi) {
+    var $removeFormA = $('<a href="#">delete</a>');
+    $formLi.append($removeFormA);
+
+    $removeFormA.on('click', function(e) {
+        e.preventDefault();
+
+        // remove the li for the tag form
+        $formLi.remove();
+    });
 }

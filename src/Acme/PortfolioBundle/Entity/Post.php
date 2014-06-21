@@ -245,8 +245,10 @@ class Post
      */
     public function addComment(\Acme\PortfolioBundle\Entity\Comment $comment)
     {
-        $this->comments[] = $comment;
-        $comment->setPost($this);
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setPost($this);
+        }
 
         return $this;
     }

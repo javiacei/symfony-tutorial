@@ -34,6 +34,7 @@ class PostType extends AbstractType
             ->add('comments', 'collection', array(
                 'type'         => new CommentType(),
                 'allow_add'    => true,
+                'allow_delete'    => true,
                 'by_reference' => false
             ))
             ->add('send', 'submit')

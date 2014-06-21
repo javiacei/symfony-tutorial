@@ -52,9 +52,25 @@ class PostsController extends Controller
         $em = $this->get('doctrine.orm.default_entity_manager');
         $request = $this->getRequest();
 
+        $originalComments = new \Doctrine\Common\Collections\ArrayCollection();
+
+        // Create an ArrayCollection of the current Comment objects in the database
+        foreach ($post->getComments() as $comment) {
+            $originalComments->add($comment);
+        }
+
         $form = $this->createForm(new PostType(), $post);
 
         if ($form->handleRequest($request)->isValid()) {
+
+            // Process comments
+            foreach ($originalComments as $comment) {
+                if (false === $post->getComments()->contains($comment)) {
+                    // User has remove this comment
+                    $em->remove($comment);
+                }
+            }
+
             // Inform user that a new Post has been created
             $flashMessage = ($post->getId()) 
                 ? "Post with id '{$post->getId()}' updated successfully" 
