@@ -21,10 +21,15 @@
         {{ form_row(form.categories) }}
 
         <h3>Comments</h3>
-        <ul class="comments">
+        <ul class="comments" data-prototype="{{ form_widget(form.comments.vars.prototype)|e }}">
             {% for comment in form.comments %}
                 <li>{{ form_row(comment.text) }}</li>
             {% endfor %}
         </ul>
     {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/acmeadmin/js/addForm.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/acmeadmin/js/addComment.js') }}"></script>
 {% endblock %}

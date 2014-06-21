@@ -243,9 +243,10 @@ class Post
      * @param \Acme\PortfolioBundle\Entity\Comment $comments
      * @return Post
      */
-    public function addComment(\Acme\PortfolioBundle\Entity\Comment $comments)
+    public function addComment(\Acme\PortfolioBundle\Entity\Comment $comment)
     {
-        $this->comments[] = $comments;
+        $this->comments[] = $comment;
+        $comment->setPost($this);
 
         return $this;
     }

@@ -32,7 +32,9 @@ class PostType extends AbstractType
             ->add('picture', new PictureType())
             // Embedded (N)
             ->add('comments', 'collection', array(
-                'type' => new CommentType()
+                'type'         => new CommentType(),
+                'allow_add'    => true,
+                'by_reference' => false
             ))
             ->add('send', 'submit')
         ;
