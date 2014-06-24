@@ -1,3 +1,7 @@
+acme_admin:
+    resource: "@AcmeAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin/
 
 acme_portfolio:
     resource: "@AcmePortfolioBundle/Resources/config/routing.yml"

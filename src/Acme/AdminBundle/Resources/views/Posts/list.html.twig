@@ -1,0 +1,42 @@
+{% extends "AcmeAdminBundle::layout.html.twig" %}
+
+{% block body %}
+    <div class="page-header">
+        <h1>Post <small>list</small></h1>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>picture</th>
+                <th>slug</th>
+                <th>date</th>
+                <th>rating</th>
+                <th>categories</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                <td>
+                    {% if post.picture %}
+                        <img class="img-circle" src="{{ post.picture.url }}"/>
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td>{{ post.slug }}</td>
+                <td>{{ post.date|date(format="Y-m-d H:i:s", timezone="UTC") }}</td>
+                <td>{{ post.rating }}</td>
+                <td>
+                    {% for category in post.categories %}
+                        {{ category.name }}{% if not loop.last %},{% endif %}
+                    {% endfor %}
+                </td>
+                <td><a href="{{ path('admin_posts_edit', {'id': post.id }) }}">Edit</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
