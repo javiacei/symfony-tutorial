@@ -1,0 +1,21 @@
+Home: Inicio
+About: Sobre
+Blog: Blog
+Contact: Contacto
+'You''re in section "%section%"': 'Estas en la sección "%section%"'
+'My projects': 'Mis proyectos'
+'{0} You don''t have any project| {1} You have only one project| ]1,Inf] You have %projectsNumber% projects': '{0} No tienes ningún proyecto| {1} Solo tienes un proyecto| ]1,Inf] Tienes %projectsNumber% proyectos'
+'You have no projects': 'No tienes proyectos'
+Skills: Habilidades
+'You seem to be a UI Developer': 'Parece que eres un Desarrollador de Interfaces de Usuario'
+'I am a Senior Developer': 'Soy un Desarrolador Senior'
+'I am a Junior developer': 'Soy un Desarrolador Junior'
+'Blog posts in "%categoryName%"': 'Posts de "%categoryName%"'
+'I am currently working @ <b>%company%</b> as <b>%position%</b>': 'Actualmente estoy trabajando en <b>%company%</b> como <b>%position%</b>'
+id: identificador
+date: fecha
+locale: idioma
+rating: clasificación
+description: descripción
+Comments: Comentarios
+'Current job': 'Trabajo actual'

@@ -9,18 +9,25 @@
     <div class="col-xs-12">
         <div class="row">
             <div class="col-xs-6">
-                <h2>My projects</h2>
+                {% set projectsNumber = projects|length %}
+                <h2>{% trans %}My projects{% endtrans %} 
+                    <small>
+                        {% transchoice projectsNumber %}
+                            {0} You don't have any project| {1} You have only one project| ]1,Inf] You have %projectsNumber% projects
+                        {% endtranschoice %}
+                    </small>
+                </h2>
                 <hr/>
                 <div class="list-group">
                     {% for project in projects %}
                         {% include "AcmePortfolioBundle:About:project.html.twig" with {'item': project} %}
                     {% else %}
-                        You have no projects
+                        {% trans %}You have no projects{% endtrans %}
                     {% endfor %}
                 </div>
             </div>
             <div class="col-xs-6">
-                <h2>Skills</h2>
+                <h2>{% trans %}Skills{% endtrans %}</h2>
                 <hr/>
 
                 {% set skills = ['HTML', 'CSS', 'PHP', 'Symfony', 'Drupal', 'Django'] %}
@@ -33,11 +40,11 @@
                 <br/>
                 <div>
                     {% if 'HTML' in skills and 'CSS' in skills %}
-                        You seem to be a UI Developer
+                        {% trans %}You seem to be a UI Developer{% endtrans %}
                     {% endif %}
                 </div>
                 <br/>
-                {{ skills|length > 5 ? macros.alert('success', 'I am a Senior Developer') : macros.alert('danger', 'I am a junior developer') }}
+                {{ skills|length > 5 ? macros.alert('success', 'I am a Senior Developer'|trans) : macros.alert('danger', 'I am a Junior developer'|trans) }}
             </div>
         </div>
     </div>

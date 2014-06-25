@@ -1,6 +1,6 @@
 
 <div class="well">
     <p>
-        I am currently working @ <b>{{ company }}</b> as <b>{{ position }}</b>
+        {% trans with {'%company%': company, '%position%': position} %}I am currently working @ <b>%company%</b> as <b>%position%</b>{% endtrans %}
     </p>
 </div>

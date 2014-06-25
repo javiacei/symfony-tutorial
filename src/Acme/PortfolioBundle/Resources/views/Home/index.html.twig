@@ -6,7 +6,7 @@
 
 {% block body %}
     <div class="col-xs-6">
-        <h2>Current job</h2>
+        <h2>{% trans %}Current job{% endtrans %}</h2>
         <hr/>
         {{ render(controller('AcmePortfolioBundle:Home:currentJob')) }}
     </div>
