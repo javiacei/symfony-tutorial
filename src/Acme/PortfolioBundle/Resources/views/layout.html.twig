@@ -12,21 +12,19 @@
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
 
-                {{ knp_menu_render('AcmePortfolioBundle:Builder:mainMenu') }}
+                {#{ knp_menu_render('AcmePortfolioBundle:Builder:mainMenu') }#}
 
-                {#
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ path('portfolio_home_index') }}">Home</a></li>
-                    <li><a href="{{ path('portfolio_about_index') }}">About</a></li>
-                    <li><a href="{{ path('portfolio_blog_index') }}">Blog</a></li>
-                    <li><a href="{{ path('portfolio_contact_index') }}">Contact</a></li>
+                    <li><a href="{{ path('portfolio_home_index') }}">{% trans %}Home{% endtrans %}</a></li>
+                    <li><a href="{{ path('portfolio_about_index') }}">{% trans %}About{% endtrans %}</a></li>
+                    <li><a href="{{ path('portfolio_blog_index') }}">{% trans %}Blog{% endtrans %}</a></li>
+                    <li><a href="{{ path('portfolio_contact_index') }}">{% trans %}Contact{% endtrans %}</a></li>
                 </ul>
-                #}
             </div>
         </nav>
         <div class="jumbotron">
             {% if section is defined %}
-                <h1>{{ section }}</h1>
+                <h1>{% trans with {'%section%': section} %}You're in section "%section%"{% endtrans %}</h1>
             {% endif %}
         </div>
 

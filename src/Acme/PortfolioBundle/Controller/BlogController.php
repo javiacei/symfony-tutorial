@@ -39,7 +39,7 @@ class BlogController extends Controller
         $categories = $query->getResult();
 
         return array(
-            'section' => 'Blog',
+            'section' => $this->get('translator')->trans('Blog'),
             'categories' => $categories
         );
     }
@@ -69,7 +69,7 @@ class BlogController extends Controller
         $posts = $repository->getPostsOfCategoryWithName($categoryName);
         
         return array(
-            'section'      => 'Blog',
+            'section' => $this->get('translator')->trans('Blog'),
             'categoryName' => $categoryName,
             'posts'        => $posts
         );
@@ -102,7 +102,7 @@ class BlogController extends Controller
         }
 
         return array(
-            'section'      => 'Blog',
+            'section' => $this->get('translator')->trans('Blog'),
             'post'         => $post
         );
     }

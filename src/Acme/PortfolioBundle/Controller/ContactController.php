@@ -31,7 +31,7 @@ class ContactController extends Controller
         return $this->render(
             'AcmePortfolioBundle:Contact:index.html.twig',
             array(
-                'section' => 'Contact',
+                'section' => $this->get('translator')->trans('Contact'),
                 'form'    => $form->createView()
             )
         );
