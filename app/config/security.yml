@@ -2,7 +2,10 @@ security:
     firewalls:
         portfolio:
             pattern:    ^/
-            anonymous:  ~
+            anonymous: ~
+            form_login:
+                login_path: security_login
+                check_path: security_login_check
 
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
