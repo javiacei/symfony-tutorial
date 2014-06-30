@@ -16,7 +16,7 @@ use Acme\PortfolioBundle\Entity\Post;
 /**
  * BlogController
  *
- * @Route("/blog")
+ * @Route("/{_locale}/blog", requirements={ "_locale" = "en|es" })
  *
  * @author Ignacio Velázquez <ivelazquez85@gmail.com>
  */

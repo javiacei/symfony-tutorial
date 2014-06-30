@@ -1,23 +1,26 @@
 
 portfolio_home_index:
-    path: /
+    path: /{_locale}
     defaults: { _controller: 'AcmePortfolioBundle:Home:index' }
+    requirements:
+        _locale: en|es
 
 portfolio_home_accept_cookies:
     path: /accept-cookies
     defaults: { _controller: 'AcmePortfolioBundle:Home:acceptCookies' }
 
-
 portfolio_about_index:
-    path: /about.{_format}
+    path: /{_locale}/about.{_format}
     defaults: { _controller: 'AcmePortfolioBundle:About:index', _format: html }
-
+    requirements:
+        _locale: en|es
 
 portfolio_blog:
     resource: "@AcmePortfolioBundle/Controller/BlogController.php"
     type: annotation
 
-
 portfolio_contact_index:
-    path: /contact
+    path: /{_locale}/contact
     defaults: { _controller: 'AcmePortfolioBundle:Contact:index' }
+    requirements:
+        _locale: en|es

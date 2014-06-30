@@ -3,6 +3,7 @@
     <head>
         <title>Symfony Tutorial</title>
         <link rel="stylesheet" href="{{ asset('bundles/acmeportfolio/css/bootstrap.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/acmeportfolio/css/flag.css') }}"/>
         <link rel="stylesheet" href="{{ asset('bundles/acmeportfolio/css/main.css') }}"/>
 
         <script type="text/javascript" src="{{ asset('bundles/acmeportfolio/js/jquery-2.1.1.min.js') }}"></script>
@@ -19,6 +20,10 @@
                     <li><a href="{{ path('portfolio_about_index') }}">{% trans %}About{% endtrans %}</a></li>
                     <li><a href="{{ path('portfolio_blog_index') }}">{% trans %}Blog{% endtrans %}</a></li>
                     <li><a href="{{ path('portfolio_contact_index') }}">{% trans %}Contact{% endtrans %}</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ path(app.request.attributes.get('_route'), {'_locale': 'en'}) }}">{% trans %}English{% endtrans %}</a></li>
+                    <li><a href="{{ path(app.request.attributes.get('_route'), {'_locale': 'es'}) }}">{% trans %}Spanish{% endtrans %}</a></li>
                 </ul>
             </div>
         </nav>
