@@ -19,3 +19,16 @@ rating: clasificación
 description: descripción
 Comments: Comentarios
 'Current job': 'Trabajo actual'
+'Your name': 'Tu nombre'
+'Your email': 'Tu email'
+'Your company': 'Tu compañia'
+'Your salary': 'Tu salario'
+'Paying in': 'Pagado en'
+'Contract date': 'Fecha del contrato'
+'You are from': 'Tu eres de'
+'You message': 'Tu mensage'
+'Accept terms of service': 'Acepta terminos del servicio'
+'Your name is required': 'Tu nombre es requerido'
+'Your email is required': 'Tu email es requerido'
+'You must accept the terms and conditions': 'Debes de acptar los terminos y condiciones'
+'If you want to hire me, fill the following form': 'Si quieres contratarme, rellene el siguiente formulario'

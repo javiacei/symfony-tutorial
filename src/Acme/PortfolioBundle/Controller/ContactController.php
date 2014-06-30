@@ -18,7 +18,7 @@ class ContactController extends Controller
 {
     public function indexAction(Request $request)
     {
-        $form = $this->createForm(new ContactType($this->get('router')));
+        $form = $this->createForm(new ContactType($this->get('router'), $this->get('translator')));
 
         $form->handleRequest($request);
 

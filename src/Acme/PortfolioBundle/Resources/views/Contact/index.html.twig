@@ -5,13 +5,13 @@
 {% endif %}
 
 {% block body %}
-    <h4>If you want to hire me, fill the following form:</h4>
+    <h4>{% trans %}If you want to hire me, fill the following form{% endtrans %}:</h4>
     <hr/>
     {{ form_start(form, {'attr': {'class': 'form-horizontal', 'novalidate': 'true' }}) }}
         {{ form_errors(form) }}
 
         <div class="form-group{% if form.name.vars.errors|length > 0 %} has-error{% endif %}">
-            {{ form_label(form.name, 'Your name', {'label_attr': {'class': 'control-label col-sm-2' }}) }}
+            {{ form_label(form.name, 'Your name'|trans, {'label_attr': {'class': 'control-label col-sm-2' }}) }}
             <div class="col-sm-8">
                 {{ form_widget(form.name, {'attr': {'class': 'form-control' }}) }}
                 <span class="help-block">
@@ -21,7 +21,7 @@
         </div>
 
         <div class="form-group{% if form.email.vars.errors|length > 0 %} has-error{% endif %}">
-            {{ form_label(form.email, 'Your email', {'label_attr': {'class': 'control-label col-sm-2' }}) }}
+            {{ form_label(form.email, 'Your email'|trans, {'label_attr': {'class': 'control-label col-sm-2' }}) }}
             <div class="col-sm-6">
                 {{ form_widget(form.email, {'attr': {'class': 'form-control' }}) }}
                 <span class="help-block">
@@ -31,7 +31,7 @@
         </div>
 
         <div class="form-group{% if form.company.vars.errors|length > 0 %} has-error{% endif %}">
-            {{ form_label(form.company, 'Your email', {'label_attr': {'class': 'control-label col-sm-2' }}) }}
+            {{ form_label(form.company, 'Your company'|trans, {'label_attr': {'class': 'control-label col-sm-2' }}) }}
             <div class="col-sm-4">
                 {{ form_widget(form.company, {'attr': {'class': 'form-control' }}) }}
                 <span class="help-block">
@@ -41,7 +41,7 @@
         </div>
 
         <div class="form-group{% if form.salary.vars.errors|length > 0 %} has-error{% endif %}">
-            {{ form_label(form.salary, 'Your salary', {'label_attr': {'class': 'control-label col-sm-2' }}) }}
+            {{ form_label(form.salary, 'Your salary'|trans, {'label_attr': {'class': 'control-label col-sm-2' }}) }}
             <div class="col-sm-4">
                 {{ form_widget(form.salary) }}
                 <span class="help-block">
@@ -51,7 +51,7 @@
         </div>
 
         <div class="form-group{% if form.currency.vars.errors|length > 0 %} has-error{% endif %}">
-            {{ form_label(form.currency, 'Paying in', {'label_attr': {'class': 'control-label col-sm-2' }}) }}
+            {{ form_label(form.currency, 'Paying in'|trans, {'label_attr': {'class': 'control-label col-sm-2' }}) }}
             <div class="col-sm-4">
                 {{ form_widget(form.currency, {'attr': {'class': 'form-control' }}) }}
                 <span class="help-block">
@@ -61,7 +61,7 @@
         </div>
 
         <div class="form-group{% if form.contractDate.vars.errors|length > 0 %} has-error{% endif %}">
-            {{ form_label(form.contractDate, 'Contract date', {'label_attr': {'class': 'control-label col-sm-2' }}) }}
+            {{ form_label(form.contractDate, 'Contract date'|trans, {'label_attr': {'class': 'control-label col-sm-2' }}) }}
             <div class="col-sm-4">
                 {{ form_widget(form.contractDate, {'attr': {'class': 'form-control' }}) }}
                 <span class="help-block">
@@ -71,7 +71,7 @@
         </div>
 
         <div class="form-group{% if form.country.vars.errors|length > 0 %} has-error{% endif %}">
-            {{ form_label(form.country, 'You are from', {'label_attr': {'class': 'control-label col-sm-2' }}) }}
+            {{ form_label(form.country, 'You are from'|trans, {'label_attr': {'class': 'control-label col-sm-2' }}) }}
             <div class="col-sm-4">
                 {{ form_widget(form.country, {'attr': {'class': 'form-control' }}) }}
                 <span class="help-block">
@@ -81,7 +81,7 @@
         </div>
 
         <div class="form-group{% if form.message.vars.errors|length > 0 %} has-error{% endif %}">
-            {{ form_label(form.message, 'You message', {'label_attr': {'class': 'control-label col-sm-2' }}) }}
+            {{ form_label(form.message, 'You message'|trans, {'label_attr': {'class': 'control-label col-sm-2' }}) }}
             <div class="col-sm-6">
                 {{ form_widget(form.message, {'attr': {'class': 'form-control', 'rows': 5 }}) }}
                 <span class="help-block">
@@ -93,7 +93,7 @@
         <div class="form-group{% if form.terms.vars.errors|length > 0 %} has-error{% endif %}">
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
-                    {{ form_label(form.terms, 'Accept terms of service') }}
+                    {{ form_label(form.terms, 'Accept terms of service'|trans) }}
                     {{ form_widget(form.terms) }}
                     <span class="help-block">
                         {{ form_errors(form.terms) }}
