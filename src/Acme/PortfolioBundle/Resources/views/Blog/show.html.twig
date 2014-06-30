@@ -21,17 +21,17 @@
                 </div>
                 <div class="panel-body">
                     <ul class="list-group">
-                        <li class="list-group-item"><b>id:</b> {{ attribute(post, 'id') }}</li>
-                        <li class="list-group-item"><b>date:</b> {{ post.date|date(format="Y-m", timezone="UTC") }}</li>
-                        <li class="list-group-item"><b>locale:</b> {{ post.locale }}</li>
-                        <li class="list-group-item"><b>rating:</b> {{ post.rating|round(0, 'ceil') }}</li>
-                        <li class="list-group-item"><b>description:</b> {{ post.description|title|raw }}</li>
+                        <li class="list-group-item"><b>{% trans %}id{% endtrans %}:</b> {{ attribute(post, 'id') }}</li>
+                        <li class="list-group-item"><b>{% trans %}date{% endtrans %}:</b> {{ post.date|date(format="Y-m", timezone="UTC") }}</li>
+                        <li class="list-group-item"><b>{% trans %}locale{% endtrans %}:</b> {{ post.locale }}</li>
+                        <li class="list-group-item"><b>{% trans %}rating{% endtrans %}:</b> {{ post.rating|round(0, 'ceil') }}</li>
+                        <li class="list-group-item"><b>{% trans %}description{% endtrans %}:</b> {{ post.description|title|raw }}</li>
                     </ul>
                 </div>
             </div>
 
             <div class="panel panel-warning">
-                <div class="panel-heading">Comments</div>
+                <div class="panel-heading">{% trans %}Comments{% endtrans %}</div>
                 <div class="panel-body">
                     <ul class="list-group">
                         {% for comment in post.comments %}

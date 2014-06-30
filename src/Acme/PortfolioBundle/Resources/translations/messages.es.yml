@@ -1,0 +1,36 @@
+Home: Inicio
+About: Sobre
+Blog: Blog
+Contact: Contacto
+'You''re in section "%section%"': 'Estas en la sección "%section%"'
+'My projects': 'Mis proyectos'
+'{0} You don''t have any project| {1} You have only one project| ]1,Inf] You have %projectsNumber% projects': '{0} No tienes ningún proyecto| {1} Solo tienes un proyecto| ]1,Inf] Tienes %projectsNumber% proyectos'
+'You have no projects': 'No tienes proyectos'
+Skills: Habilidades
+'You seem to be a UI Developer': 'Parece que eres un Desarrollador de Interfaces de Usuario'
+'I am a Senior Developer': 'Soy un Desarrolador Senior'
+'I am a Junior developer': 'Soy un Desarrolador Junior'
+'Blog posts in "%categoryName%"': 'Posts de "%categoryName%"'
+'I am currently working @ <b>%company%</b> as <b>%position%</b>': 'Actualmente estoy trabajando en <b>%company%</b> como <b>%position%</b>'
+id: identificador
+date: fecha
+locale: idioma
+rating: clasificación
+description: descripción
+Comments: Comentarios
+'Current job': 'Trabajo actual'
+'Your name': 'Tu nombre'
+'Your email': 'Tu email'
+'Your company': 'Tu compañia'
+'Your salary': 'Tu salario'
+'Paying in': 'Pagado en'
+'Contract date': 'Fecha del contrato'
+'You are from': 'Tu eres de'
+'You message': 'Tu mensage'
+'Accept terms of service': 'Acepta terminos del servicio'
+'Your name is required': 'Tu nombre es requerido'
+'Your email is required': 'Tu email es requerido'
+'You must accept the terms and conditions': 'Debes de acptar los terminos y condiciones'
+'If you want to hire me, fill the following form': 'Si quieres contratarme, rellene el siguiente formulario'
+English: Inglés
+Spanish: Español

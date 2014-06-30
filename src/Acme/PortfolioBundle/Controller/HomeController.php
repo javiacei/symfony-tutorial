@@ -21,7 +21,7 @@ class HomeController extends Controller
     public function indexAction()
     {
         return array(
-            'section' => 'Home'
+            'section' => $this->get('translator')->trans('Home'),
         );
     }
 

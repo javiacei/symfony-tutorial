@@ -1,0 +1,4 @@
+category.name.regex: 'Invalid name format, use only characters and - with no spaces'
+post.date.date: 'This date is not a valid date'
+post.rating.min_range: 'This value should be {{ limit }} or more'
+post.rating.max_range: 'This value should be {{ limit }} or less'

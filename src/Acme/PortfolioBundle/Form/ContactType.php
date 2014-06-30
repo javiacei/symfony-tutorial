@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\True;
+Use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * ContactType
@@ -19,9 +20,10 @@ class ContactType extends AbstractType
 {
     public $router;
 
-    public function __construct(Router $router)
+    public function __construct(Router $router, TranslatorInterface $translator)
     {
         $this->router = $router;
+        $this->translator = $translator;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -30,12 +32,16 @@ class ContactType extends AbstractType
             ->setAction($this->router->generate('portfolio_contact_index'))
             ->add('name', 'text', array(
                 'constraints' => array(
-                    new NotBlank(array('message' => 'Your name is required'))
+                    new NotBlank(array(
+                        'message' => $this->translator->trans('Your name is required')
+                    ))
                 )
             ))
             ->add('email', 'email', array(
                 'constraints' => array(
-                    new NotBlank(array('message' => 'Your email is required')),
+                    new NotBlank(array(
+                        'message' => $this->translator->trans('Your email is required')
+                    )),
                     new Email(),
                 )
             ))
@@ -56,7 +62,9 @@ class ContactType extends AbstractType
             ))
             ->add('terms', 'checkbox', array(
                 'constraints' => array(
-                    new True(array('message' => 'You must accept the terms and conditions'))
+                    new True(array(
+                        'message' => $this->translator->trans('You must accept the terms and conditions')
+                    ))
                 )
             ))
             ->add('send', 'submit');

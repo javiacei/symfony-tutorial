@@ -30,7 +30,7 @@ class AboutController extends Controller
 
         if ('html' === $request->getRequestFormat()) {
             $response = array(
-                'section' => 'About',
+                'section' => $this->get('translator')->trans('About'),
                 'projects' => $projects
             );
         }
