@@ -4,3 +4,6 @@ security_login:
 
 security_login_check:
     path:  /account/login_check
+
+security_logout:
+    path:  /account/logout

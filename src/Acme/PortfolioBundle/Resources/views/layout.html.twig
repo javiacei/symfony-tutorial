@@ -30,8 +30,12 @@
                                 <span class="glyphicon glyphicon-user"></span> {{app.user.username}} <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">{% trans %}Logout{% endtrans %}</a></li>
+                                <li><a href="{{ path('security_logout') }}">{% trans %}Logout{% endtrans %}</a></li>
                             </ul>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{{ path('security_login') }}"><span class="glyphicon glyphicon-user"></span> {% trans %}login{% endtrans %} </a>
                         </li>
                     {% endif %}
 
