@@ -1,0 +1,4 @@
+category.name.regex: 'Formato del nombre inválido, usa solo caracteres y el caracter - sin espacios'
+post.date.date: 'Esta fecha no es válida'
+post.rating.min_range: 'Este valor debe de ser {{ limit }} o más'
+post.rating.max_range: 'Este valor debe de ser {{ limit }} o menos'

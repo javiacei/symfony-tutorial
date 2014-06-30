@@ -4,7 +4,7 @@ Acme\PortfolioBundle\Entity\Post:
     properties:
         date:
             - Date:
-                message: 'This date is not a valid date'
+                message: 'post.date.date'
             - NotBlank: ~
         rating:
             - Type:
@@ -12,8 +12,8 @@ Acme\PortfolioBundle\Entity\Post:
             - Range:
                 min: 0
                 max: 10
-                minMessage: 'This value should be {{ limit }} or more'
-                maxMessage: 'This value should be {{ limit }} or less'
+                minMessage: 'post.rating.min_range'
+                maxMessage: 'post.rating.max_range'
         locale:
             - Type:
                 type: string
@@ -79,3 +79,4 @@ Acme\PortfolioBundle\Entity\Category:
                 max: 15
             - Regex: 
                 pattern: "/^[a-z\-]+$/i"
+                message: "category.name.regex"
