@@ -37,6 +37,17 @@ class User implements UserInterface, \Serializable
     private $password;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Role", inversedBy="users")
+     *
+     */
+    private $roles;
+
+    public function __construct()
+    {
+        $this->roles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -104,14 +115,6 @@ class User implements UserInterface, \Serializable
     /**
      * @inheritDoc
      */
-    public function getRoles()
-    {
-        return array('ROLE_USER');
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function eraseCredentials()
     {
     }
@@ -141,4 +144,35 @@ class User implements UserInterface, \Serializable
             // $this->salt
         ) = unserialize($serialized);
     } 
+
+    /**
+     * Add roles
+     *
+     * @param \Acme\PortfolioBundle\Entity\Role $roles
+     * @return User
+     */
+    public function addRole(\Acme\PortfolioBundle\Entity\Role $roles)
+    {
+        $this->roles[] = $roles;
+
+        return $this;
+    }
+
+    /**
+     * Remove roles
+     *
+     * @param \Acme\PortfolioBundle\Entity\Role $roles
+     */
+    public function removeRole(\Acme\PortfolioBundle\Entity\Role $roles)
+    {
+        $this->roles->removeElement($roles);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getRoles()
+    {
+        return $this->roles->toArray();
+    }
 }

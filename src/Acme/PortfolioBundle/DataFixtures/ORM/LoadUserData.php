@@ -10,6 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 use Acme\PortfolioBundle\Entity\User;
+use Acme\PortfolioBundle\Entity\Role;
 
 class LoadUserData implements FixtureInterface
 {
@@ -18,10 +19,18 @@ class LoadUserData implements FixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $user = new User();
+        $adminRole = new Role();
+        $adminRole->setName('Admin Role')->setRole('ROLE_ADMIN');
 
-        $user->setUsername('admindb');
-        $user->setPassword(password_hash('admindb', PASSWORD_BCRYPT, array('cost' => 12)));
+        $manager->persist($adminRole);
+
+        $user = new User();
+        $user
+            ->setUsername('admindb')
+            ->setPassword(password_hash('admindb', PASSWORD_BCRYPT, array('cost' => 12)))
+            ->addRole($adminRole)
+        ;
+
 
         $manager->persist($user);
         $manager->flush();
