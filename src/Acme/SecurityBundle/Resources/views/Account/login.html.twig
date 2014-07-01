@@ -10,7 +10,7 @@
             <div class="col-sm-8">
                 <label for="username">Password:</label>
                 <input type="password" id="password" name="_password" />
-                <input type="hidden" name="_target_path" value="/" />
+                <input type="hidden" name="_target_path" value="{{ app.request.headers.get('referer') }}" />
 
                 <span class="help-block">
                     {{ error.message|default('') }}
