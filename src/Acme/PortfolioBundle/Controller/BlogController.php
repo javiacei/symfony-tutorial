@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 use Doctrine\ORM\Query\ResultSetMappingBuilder;
 
@@ -114,6 +115,7 @@ class BlogController extends Controller
      *        "categoryName" = "[a-z]+",
      *        "slug" = "[a-z\-]+"
      * })
+     * @Security("has_role('ROLE_ADMIN')")
      *
      * @param $categoryName
      * @param $slug
@@ -122,10 +124,6 @@ class BlogController extends Controller
      */
     public function removeAction($categoryName, $slug)
     {
-        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
-            throw $this->createAccessDeniedException('You cannot remove a post!');
-        }
-
         $dm = $this->get('doctrine.orm.default_entity_manager');
 
         $post = $dm
