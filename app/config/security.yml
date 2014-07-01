@@ -11,7 +11,8 @@ security:
                 target: /%locale%
 
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_USER, host: ^localhost.symfony-tutorial\.com$, ip: 127.0.0.1, methods: [GET] }
+        - { path: ^/admin, roles: ROLE_ADMIN, host: ^localhost.symfony-tutorial\.com$ }
 
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
