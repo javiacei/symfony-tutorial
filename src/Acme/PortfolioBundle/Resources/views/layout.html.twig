@@ -21,8 +21,10 @@
                     <li><a href="{{ path('portfolio_contact_index') }}">{% trans %}Contact{% endtrans %}</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ path(app.request.attributes.get('_route'), {'_locale': 'en'}) }}">{% trans %}English{% endtrans %}</a></li>
-                    <li><a href="{{ path(app.request.attributes.get('_route'), {'_locale': 'es'}) }}">{% trans %}Spanish{% endtrans %}</a></li>
+                    {% set route =  app.request.attributes.get('_route') %}
+                    {% set route_params =  app.request.attributes.get('_route_params') %}
+                    <li><a href="{{ path(route, route_params|merge({'_locale': 'en'})) }}">{% trans %}English{% endtrans %}</a></li>
+                    <li><a href="{{ path(route, route_params|merge({'_locale': 'es'})) }}">{% trans %}Spanish{% endtrans %}</a></li>
 
                     {% if app.user %}
                         <li class="dropdown">
