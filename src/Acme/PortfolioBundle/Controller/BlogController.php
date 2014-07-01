@@ -122,6 +122,10 @@ class BlogController extends Controller
      */
     public function removeAction($categoryName, $slug)
     {
+        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('You cannot remove a post!');
+        }
+
         $dm = $this->get('doctrine.orm.default_entity_manager');
 
         $post = $dm
