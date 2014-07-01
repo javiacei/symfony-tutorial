@@ -20,8 +20,8 @@ class LoadUserData implements FixtureInterface
     {
         $user = new User();
 
-        $user->setUsername('admin-from-database');
-        $user->setPassword('admin-from-database');
+        $user->setUsername('admindb');
+        $user->setPassword(password_hash('admindb', PASSWORD_BCRYPT, array('cost' => 12)));
 
         $manager->persist($user);
         $manager->flush();
