@@ -12,9 +12,11 @@
                 <a href="{{ path('portfolio_blog_show', {'categoryName': categoryName, 'slug': post.slug}) }}">
                     {{ post.slug }}
                 </a>
-                <a href="{{ path('portfolio_blog_remove', {'categoryName': categoryName, 'slug': post.slug}) }}">
-                    <span class="glyphicon glyphicon-remove-circle"></span>
-                </a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('portfolio_blog_remove', {'categoryName': categoryName, 'slug': post.slug}) }}">
+                        <span class="glyphicon glyphicon-remove-circle"></span>
+                    </a>
+                {% endif %}
             </li>
         {% endfor %}
     </ul>
