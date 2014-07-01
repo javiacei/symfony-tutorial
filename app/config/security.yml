@@ -26,5 +26,5 @@ security:
         in_memory:
             memory:
                 users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+                    javiacei:   { password: 1234, roles: [ 'ROLE_USER' ] }
+                    admin:      { password: admin, roles: [ 'ROLE_ADMIN' ] }
