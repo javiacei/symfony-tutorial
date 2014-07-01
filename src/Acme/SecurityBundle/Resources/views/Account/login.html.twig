@@ -1,0 +1,27 @@
+{% extends "AcmeSecurityBundle::layout.html.twig" %}
+
+{% block body %}
+    <form action="{{ path('security_login_check') }}" method="post" class="form-horizontal">
+        <div class="form-group{% if error is defined and error %} has-error{% endif %}">
+            <div class="col-sm-8">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="_username" value="{{ last_username|default('') }}"/>
+            </div>
+            <div class="col-sm-8">
+                <label for="username">Password:</label>
+                <input type="password" id="password" name="_password" />
+                <input type="hidden" name="_target_path" value="{{ app.request.headers.get('referer') }}" />
+
+                <span class="help-block">
+                    {{ error.message|default('') }}
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+                <button type="submit">login</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

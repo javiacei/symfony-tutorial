@@ -1,7 +1,6 @@
-
 portfolio_home_index:
     path: /{_locale}
-    defaults: { _controller: 'AcmePortfolioBundle:Home:index' }
+    defaults: { _controller: 'AcmePortfolioBundle:Home:index', _locale: 'en' }
     requirements:
         _locale: en|es
 
@@ -11,7 +10,7 @@ portfolio_home_accept_cookies:
 
 portfolio_about_index:
     path: /{_locale}/about.{_format}
-    defaults: { _controller: 'AcmePortfolioBundle:About:index', _format: html }
+    defaults: { _controller: 'AcmePortfolioBundle:About:index', _format: html, _locale: 'en' }
     requirements:
         _locale: en|es
 
@@ -21,6 +20,6 @@ portfolio_blog:
 
 portfolio_contact_index:
     path: /{_locale}/contact
-    defaults: { _controller: 'AcmePortfolioBundle:Contact:index' }
+    defaults: { _controller: 'AcmePortfolioBundle:Contact:index', _locale: 'en' }
     requirements:
         _locale: en|es

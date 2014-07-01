@@ -1,0 +1,9 @@
+security_login:
+    path:  /account/login
+    defaults: { _controller: AcmeSecurityBundle:Account:login }
+
+security_login_check:
+    path:  /account/login_check
+
+security_logout:
+    path:  /account/logout

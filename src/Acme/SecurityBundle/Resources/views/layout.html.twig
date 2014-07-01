@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Symfony Tutorial</title>
+        <link rel="stylesheet" href="{{ asset('bundles/acmeportfolio/css/bootstrap.css') }}"/>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Symfony Tutorial - Security</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="jumbotron">
+            <h3>Account <span class="badge">login</span></h3>
+        </div>
+
+        <div class="container-fluid">
+            {% block body %} {% endblock %}
+        </div>
+    </body>
+</html>
